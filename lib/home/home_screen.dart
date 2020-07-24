@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Color(0XFFfafafa),
       appBar: buildAppBar(),
       body: Body(),
-      bottomNavigationBar: MyBottomNavBar(),
+      bottomNavigationBar: MyNavbar(),
     );
   }
 
