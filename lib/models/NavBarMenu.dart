@@ -1,6 +1,5 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
+import 'package:shop_app/Screens/home/home.dart';
 import 'package:shop_app/Screens/products/products.dart';
 
 class ButtonData {
@@ -21,12 +20,8 @@ class ButtonData {
 }
 
 List<ButtonData> NavMenu = [
-  ButtonData(
-    icon: Icons.home,
-    title: "Home",
-  ),
-  ButtonData(
-      icon: Icons.shopping_cart, title: "products", goto: ProductesScreen.id),
+  ButtonData(icon: Icons.home, title: "Home"),
+  ButtonData(icon: Icons.shopping_cart, title: "products"),
   ButtonData(
     icon: Icons.settings,
     title: "Settings",

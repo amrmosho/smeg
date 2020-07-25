@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/Screens/products/products.dart';
 import 'package:shop_app/models/NavBarMenu.dart';
 import '../../constants.dart';
 
-class MyNavbar extends StatefulWidget {
+class INSNavbar extends StatefulWidget {
+  final int active_index;
+  final Function onselected;
+  const INSNavbar({Key key, this.onselected, this.active_index})
+      : super(key: key);
   @override
-  _MyNavbarState createState() => _MyNavbarState();
+  _INSNavbarState createState() =>
+      _INSNavbarState(index: active_index, fun: onselected);
 }
 
-class _MyNavbarState extends State<MyNavbar> {
-  int _index = 0;
+class _INSNavbarState extends State<INSNavbar> {
+  int index;
+  final Function fun;
+  _INSNavbarState({this.fun, this.index = 0});
+
   @override
   Widget build(BuildContext context) {
     List<Widget> data = [];
@@ -16,13 +25,14 @@ class _MyNavbarState extends State<MyNavbar> {
       data.add(NavbarItem(
         index: i,
         button: NavMenu[i],
-        selected: _index,
+        selected: index,
         onclick: () {
           setState(() {
-            if (NavMenu[i].goto == null) {
+            if (NavMenu[i].goto != null) {
               Navigator.pushNamed(context, NavMenu[i].goto);
             }
-            _index = i;
+            this.fun(i);
+            index = i;
           });
         },
       ));

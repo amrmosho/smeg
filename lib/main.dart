@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/Screens/details/details_screen.dart';
 import 'package:shop_app/Screens/products/products.dart';
+import 'package:shop_app/Screens/start/start.dart';
 import 'constants.dart';
 import 'Screens/home/home.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeScreen(),
+      home: StartScreen(),
     );
   }
 }

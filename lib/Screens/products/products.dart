@@ -2,12 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/Screens/products/components/body.dart';
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/ins/components/my_bottom_nav_bar.dart';
 
 class ProductesScreen extends StatelessWidget {
   static String id = "productes";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: buildAppBar(), body: Body());
+    return Scaffold(
+      appBar: buildAppBar(),
+      body: Body(),
+      /*  bottomNavigationBar: INSNavbar(
+        active_index: 1,
+      ),*/
+    );
   }
 
   AppBar buildAppBar() {
