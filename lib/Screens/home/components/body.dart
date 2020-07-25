@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/ins/ins_cards_list.dart';
+import 'package:shop_app/models/Product.dart';
 
 import 'featurred_plants.dart';
 import 'header_with_seachbox.dart';
-import 'recomend_plants.dart';
-import 'title_with_more_bbtn.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -15,11 +15,21 @@ class Body extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
+        children: [
           HeaderWithSearchBox(size: size),
-          TitleWithMoreBtn(title: "Recomended", press: () {}),
-          RecomendsPlants(),
-          TitleWithMoreBtn(title: "Featured Plants", press: () {}),
+          INSCardsList(
+            title: "Xxxx",
+            press: () => {},
+            listHeight: 200,
+            contents: news,
+          ),
+          INSCardsList(
+            title: "Xxxx",
+            press: () => {},
+            listHeight: 400,
+            contents: news,
+          ),
+          INSCardsList(title: "Xxxx", press: () => {}, contents: products),
           FeaturedPlants(),
           SizedBox(height: kDefultpadding),
         ],

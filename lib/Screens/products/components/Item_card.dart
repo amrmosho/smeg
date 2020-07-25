@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/ins/data_types.dart';
+
 import '../../../constants.dart';
 
 class ItemCard extends StatelessWidget {
-  final Product product;
+  final Content product;
   final Function press;
   ItemCard({this.product, this.press});
-/*
-  const ItemCard({
-    Key key,
-  }) : super(key: key);*/
 
   @override
   Widget build(BuildContext context) {

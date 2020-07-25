@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shop_app/Screens/details/components/cat_conter.dart';
+import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/models/Product.dart';
 
 class CounterAndFavBtn extends StatelessWidget {
@@ -9,7 +10,7 @@ class CounterAndFavBtn extends StatelessWidget {
     @required this.product,
   }) : super(key: key);
 
-  final Product product;
+  final Content product;
 
   @override
   Widget build(BuildContext context) {

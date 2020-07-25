@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/models/Product.dart';
 
 import '../../../constants.dart';
@@ -10,7 +11,7 @@ class AddToCart extends StatelessWidget {
     @required this.product,
   }) : super(key: key);
 
-  final Product product;
+  final Content product;
 
   @override
   Widget build(BuildContext context) {
