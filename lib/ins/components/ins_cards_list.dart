@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/constants.dart';
 
-import 'data_types.dart';
+import '../data_types.dart';
 
 class INSCardsList extends StatelessWidget {
   const INSCardsList({

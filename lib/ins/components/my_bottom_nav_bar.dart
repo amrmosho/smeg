@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/models/NavBarMenu.dart';
-import '../constants.dart';
+import '../../constants.dart';
 
 class MyNavbar extends StatefulWidget {
   @override
@@ -19,6 +19,9 @@ class _MyNavbarState extends State<MyNavbar> {
         selected: _index,
         onclick: () {
           setState(() {
+            if (NavMenu[i].goto == null) {
+              Navigator.pushNamed(context, NavMenu[i].goto);
+            }
             _index = i;
           });
         },

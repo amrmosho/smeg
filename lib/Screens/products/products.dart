@@ -4,6 +4,7 @@ import 'package:shop_app/Screens/products/components/body.dart';
 import 'package:shop_app/constants.dart';
 
 class ProductesScreen extends StatelessWidget {
+  static String id = "productes";
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: buildAppBar(), body: Body());

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/ins_cards_list.dart';
+import 'package:shop_app/ins/components/ins_cards_list.dart';
 import 'package:shop_app/models/Product.dart';
 
 import 'featurred_plants.dart';

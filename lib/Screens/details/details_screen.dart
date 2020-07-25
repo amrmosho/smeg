@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shop_app/Screens/details/components/body.dart';
+import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/data_types.dart';
-import 'package:shop_app/models/Product.dart';
-import '../../constants.dart';
 
 class DetaillsScreen extends StatelessWidget {
   final Content product;
+  static String id = "detaills";
 
   const DetaillsScreen({Key key, this.product}) : super(key: key);
   @override
