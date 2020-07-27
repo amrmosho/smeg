@@ -10,11 +10,12 @@ const double kDefaultPadding = 20.0;
 
 const INSDefultpadding = 20.0;
 const INSPrimaryColor = Color(0xFFf6bf2e);
+const INSAccentColor = Color(0xFF666666);
 
 /** #region  nav_bar*/
 
 const INSNavBackground = Colors.white;
-const double INSNavPadding = INSDefultpadding / 2;
+const double INSNavPadding = 10;
 const double INSNavHeight = 60.0;
 
 const double INSBorderRadiusTopLeft = 0;
@@ -27,20 +28,6 @@ const double INSNavShadowOpacity = 0.35;
 const double INSNavShadowBlur = 13;
 const INSNavShadowColor = INSPrimaryColor;
 
-/**nav_bar Icons*/
-const Duration INSAnimtionSpeed = Duration(milliseconds: 270);
-
-const INSNavSelectedIconColor = Colors.white;
-const INSNavSelectedIconBackground = INSPrimaryColor;
-const double INSNavSelectedIconSize = 18;
-const double INSNavSelectedIconTextSize = 12;
-
-const INSNavUnSelectedIconColor = Colors.grey;
-const INSNavUnSelectedIconBackground = Colors.transparent;
-const double INSNavunSelectedIconSize = 20;
-
-/** #endregion  nav_bar*/
-
 /** #region  carditem*/
 
 const double INSListCardSHeight = 200;
@@ -49,6 +36,6 @@ const INSListCardDefultBackground = Colors.white;
 const double INSListCardDefultPadding = INSDefultpadding / 2;
 const double INSListCardDefultMargin = INSDefultpadding / 2;
 const double INSListCardImageDefultPadding = INSDefultpadding / 2;
-const double INSListCardDefultImageBorderRadius = 16;
+const double INSListCardDefultImageBorderRadius = 0;
 
 /** #endregion  carditem*/

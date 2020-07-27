@@ -25,13 +25,21 @@ class INSCardsList extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-          child: (more == null)
-              ? Text("")
-              : Row(
-                  children: <Widget>[
-                    Text(title),
-                    Spacer(),
-                    FlatButton(
+          child: Row(
+            children: <Widget>[
+              (title == null)
+                  ? Text("")
+                  : Text(
+                      title,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline6
+                          .copyWith(color: Colors.black),
+                    ),
+              Spacer(),
+              (more == null)
+                  ? Text("")
+                  : FlatButton(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -42,8 +50,8 @@ class INSCardsList extends StatelessWidget {
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
-                  ],
-                ),
+            ],
+          ),
         ),
         ListBody(
           contents: contents,

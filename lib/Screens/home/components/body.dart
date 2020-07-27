@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/app_components/screen_title.dart';
+import 'package:shop_app/app_components/search_bar.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/components/ins_cards_list.dart';
 import 'package:shop_app/models/Product.dart';
 
-import 'featurred_plants.dart';
 import 'header_with_seachbox.dart';
 
 class Body extends StatelessWidget {
@@ -16,7 +17,15 @@ class Body extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HeaderWithSearchBox(size: size),
+          //  HeaderWithSearchBox(size: size),
+          ScreenTitle(title: "Food", subtitle: "Delevry"),
+          INSCardsList(
+            title: "News",
+            press: () => {},
+            listHeight: 400,
+            more: "More",
+            contents: news,
+          ),
           INSCardsList(
             title: "Xxxx",
             press: () => {},
@@ -30,7 +39,6 @@ class Body extends StatelessWidget {
             contents: news,
           ),
           INSCardsList(title: "Xxxx", press: () => {}, contents: products),
-          FeaturedPlants(),
           SizedBox(height: kDefultpadding),
         ],
       ),

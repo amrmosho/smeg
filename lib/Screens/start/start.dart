@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shop_app/Screens/cart/cart.dart';
+import 'package:shop_app/Screens/contact/contact.dart';
 import 'package:shop_app/Screens/home/home.dart';
 import 'package:shop_app/Screens/products/products.dart';
 import 'package:shop_app/ins/components/my_bottom_nav_bar.dart';
@@ -13,6 +15,13 @@ class StartScreen extends StatefulWidget {
 class _StratScreenState extends State<StartScreen> {
   int _index = 0;
   PageController _pageController;
+  List<Widget> SubScreens = [
+    HomeScreen(),
+    ProductesScreen(),
+    CartScreen(),
+    ConactScreen()
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +33,7 @@ class _StratScreenState extends State<StartScreen> {
           });
         },
         controller: _pageController,
-        children: [HomeScreen(), ProductesScreen()],
+        children: SubScreens,
       ),
       bottomNavigationBar: INSNavbar(
         onselected: (index) {

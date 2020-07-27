@@ -5,7 +5,6 @@ List<Content> news = [
   Content(
       id: 2,
       title: "Belt Bag",
-      price: 234,
       size: 8,
       description: dummyText,
       image: "assets/images/bag_2.png",

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:shop_app/ins/components/my_bottom_nav_bar.dart';
 import 'package:shop_app/Screens/home/components/body.dart';
+import 'package:shop_app/app_components/app_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   static String id = "home";
@@ -11,23 +10,6 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Color(0XFFfafafa),
       appBar: buildAppBar(),
       body: Body(),
-      /* bottomNavigationBar: INSNavbar(
-        active_index: 0,
-      ),*/
-    );
-  }
-
-  AppBar buildAppBar() {
-    return AppBar(
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-      leading: IconButton(
-        icon: SvgPicture.asset(
-          "assets/icons/menu.svg",
-          color: Colors.black,
-        ),
-        onPressed: () {},
-      ),
     );
   }
 }

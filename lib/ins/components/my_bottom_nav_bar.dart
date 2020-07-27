@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/Screens/products/products.dart';
+import 'package:shop_app/ins/ui/ina_inputs.dart';
 import 'package:shop_app/models/NavBarMenu.dart';
 import '../../constants.dart';
+import '../data_types.dart';
+
+const double INSNavSelectedWidth = 120;
+
+const INSNavUnSelectedIconColor = INSAccentColor;
+const INSNavUnSelectedIconBackground = Colors.white;
+const double INSNavUnSelectedFontSize = 0.1;
+const double INSNavUnSelectedWidth = 50;
+
+const Duration INSAnimtionSpeed = Duration(milliseconds: 270);
 
 class INSNavbar extends StatefulWidget {
   final int active_index;
@@ -75,64 +85,51 @@ class NavbarItem extends StatelessWidget {
   final int index;
   final int selected;
   final Function onclick;
+
+  final Color btn_icon_color;
+  final double btn_icon_size;
+  final double btn_text_size;
+  final Color btn_text_color;
+  final Color btn_background;
+  final double btn_border_radius;
+
   const NavbarItem(
-      {Key key, this.button, this.selected, this.index, this.onclick})
+      {Key key,
+      this.button,
+      this.selected,
+      this.index,
+      this.onclick,
+      this.btn_icon_color,
+      this.btn_icon_size,
+      this.btn_text_size,
+      this.btn_text_color,
+      this.btn_background,
+      this.btn_border_radius})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    bool is_selected = false;
-    Color _color = INSNavUnSelectedIconBackground;
-    Color _icon_color = INSNavUnSelectedIconColor;
-    double _text_size = 0.1;
-    double _width = 50;
-    if (this.index == selected) {
-      is_selected = true;
-      _color = (this.button.background == null)
-          ? INSNavSelectedIconBackground
-          : this.button.background;
+    bool is_selected = true;
 
-      _icon_color = (this.button.color == null)
-          ? INSNavSelectedIconColor
-          : this.button.color;
-      _width = 120;
-      _text_size = INSNavSelectedIconTextSize;
+    double _width = INSNavSelectedWidth;
+    if (this.index != selected) {
+      is_selected = false;
+      _width = INSNavUnSelectedWidth;
     }
 
     return AnimatedContainer(
-      width: _width,
-      duration: INSAnimtionSpeed,
-      decoration: BoxDecoration(
-          color: _color, borderRadius: BorderRadius.all(Radius.circular(25))),
-      child: Padding(
-          padding: const EdgeInsets.only(right: 0),
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: [
-              Row(
-                children: [
-                  IconButton(
-                    padding: const EdgeInsets.all(0),
-                    icon: Icon(
-                      this.button.icon,
-                      size: INSNavSelectedIconSize,
-                      color: _icon_color,
-                    ),
-                    onPressed: onclick,
-                  ),
-                  is_selected
-                      ? Text(
-                          this.button.title,
-                          style: TextStyle(
-                            fontSize: INSNavSelectedIconTextSize,
-                            color: _icon_color,
-                          ),
-                        )
-                      : Text(""),
-                ],
-              )
-            ],
-          )),
-    );
+        width: _width,
+        duration: INSAnimtionSpeed,
+        child: INSButton(
+          this.button,
+          icon_color: btn_icon_color,
+          icon_size: btn_icon_size,
+          text_size: is_selected ? btn_text_size : INSNavUnSelectedFontSize,
+          text_color: btn_text_color,
+          background:
+              is_selected ? btn_background : INSNavUnSelectedIconBackground,
+          border_radius: btn_border_radius,
+          onclick: onclick,
+        ));
   }
 }
