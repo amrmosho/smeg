@@ -24,7 +24,8 @@ class INSCardsList extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+          padding: const EdgeInsets.only(
+              left: kDefaultPadding, bottom: kDefaultPadding),
           child: Row(
             children: <Widget>[
               (title == null)
@@ -34,7 +35,7 @@ class INSCardsList extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .headline6
-                          .copyWith(color: Colors.black),
+                          .copyWith(color: INSDefultLebalColor),
                     ),
               Spacer(),
               (more == null)
@@ -98,12 +99,12 @@ class ItemCard extends StatelessWidget {
     return GestureDetector(
       onTap: press,
       child: Container(
-        margin: const EdgeInsets.all(INSListCardDefultPadding),
-        padding: const EdgeInsets.all(INSListCardDefultPadding),
+        margin:
+            const EdgeInsets.symmetric(horizontal: INSListCardDefultPadding),
+        padding: const EdgeInsets.all(0),
         decoration: BoxDecoration(
           color: INSListCardDefultBackground,
-          borderRadius:
-              BorderRadius.circular(INSListCardDefultImageBorderRadius),
+          borderRadius: BorderRadius.circular(INSListCardDefulteBorderRadius),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,18 +122,29 @@ class ItemCard extends StatelessWidget {
                     child: Image.asset(this.product.image)),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: kDefultpadding / 4),
-              child: Text(
-                this.product.title,
-                style: TextStyle(color: kTextLightColor),
-              ),
-            ),
+            (this.product.title == null)
+                ? Text("")
+                : Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: kDefultpadding / 2,
+                        horizontal: kDefultpadding / 2),
+                    child: Text(
+                      this.product.title,
+                      style: TextStyle(color: kTextLightColor),
+                    ),
+                  ),
             (this.product.price == null)
                 ? Text("")
-                : Text(
-                    "\$${this.product.price}",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                : Padding(
+                    padding: const EdgeInsets.only(
+                        top: 0,
+                        left: kDefultpadding / 2,
+                        right: kDefultpadding / 2,
+                        bottom: kDefultpadding),
+                    child: Text(
+                      "\$${this.product.price}",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
           ],
         ),

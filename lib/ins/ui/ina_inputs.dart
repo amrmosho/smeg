@@ -48,7 +48,7 @@ class INSButton extends StatelessWidget {
                     this.button.icon,
                     size: icon_size == null ? INSBTNDefaultIconSize : icon_size,
                     color: icon_color == null
-                        ? INSBTNDefaultIconColor
+                        ? INSBTNDefaultTextColor
                         : icon_color,
                   ),
                   onPressed: onclick,

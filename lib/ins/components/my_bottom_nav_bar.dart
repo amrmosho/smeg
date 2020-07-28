@@ -6,7 +6,7 @@ import '../data_types.dart';
 
 const double INSNavSelectedWidth = 120;
 
-const INSNavUnSelectedIconColor = INSAccentColor;
+const INSNavUnSelectedIconColor = INSDefultTextColor;
 const INSNavUnSelectedIconBackground = Colors.white;
 const double INSNavUnSelectedFontSize = 0.1;
 const double INSNavUnSelectedWidth = 50;
@@ -49,6 +49,12 @@ class _INSNavbarState extends State<INSNavbar> {
     }
 
     return Container(
+      margin: EdgeInsets.only(
+        left: INSNavMarginH,
+        right: INSNavMarginH,
+        bottom: INSNavMarginV,
+        top: INSNavMarginV,
+      ),
       padding: EdgeInsets.only(
         left: INSNavPadding * 2,
         right: INSNavPadding * 2,
@@ -122,10 +128,10 @@ class NavbarItem extends StatelessWidget {
         duration: INSAnimtionSpeed,
         child: INSButton(
           this.button,
-          icon_color: btn_icon_color,
+          icon_color: is_selected ? btn_icon_color : INSNavUnSelectedIconColor,
           icon_size: btn_icon_size,
           text_size: is_selected ? btn_text_size : INSNavUnSelectedFontSize,
-          text_color: btn_text_color,
+          text_color: is_selected ? btn_text_color : INSNavUnSelectedIconColor,
           background:
               is_selected ? btn_background : INSNavUnSelectedIconBackground,
           border_radius: btn_border_radius,

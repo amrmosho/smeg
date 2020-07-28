@@ -9,7 +9,8 @@ class ProductesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      backgroundColor: Colors.black,
+      // appBar: buildAppBar(),
       body: Body(),
       /*  bottomNavigationBar: INSNavbar(
         active_index: 1,
