@@ -16,7 +16,6 @@ class SearchBar extends StatelessWidget {
     _size = (size == null) ? MediaQuery.of(context).size : size;
 
     return Container(
-      margin: EdgeInsets.only(bottom: kDefultpadding * 2.5),
       height: 50,
       child: Positioned(
         bottom: 0,
@@ -54,9 +53,6 @@ class SearchBar extends StatelessWidget {
                     ),
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
-                    // surffix isn't working properly  with SVG
-                    // thats why we use row
-                    // suffixIcon: SvgPicture.asset("assets/icons/search.svg"),
                   ),
                 ),
               ),

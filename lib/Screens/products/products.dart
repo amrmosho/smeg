@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop_app/Screens/products/components/body.dart';
 import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/components/my_bottom_nav_bar.dart';
 
 class ProductesScreen extends StatelessWidget {
   static String id = "productes";
@@ -10,14 +8,9 @@ class ProductesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      // appBar: buildAppBar(),
-      body: Body(),
-      /*  bottomNavigationBar: INSNavbar(
-        active_index: 1,
-      ),*/
     );
   }
-
+/*
   AppBar buildAppBar() {
     return AppBar(
       backgroundColor: Colors.white,
@@ -47,5 +40,5 @@ class ProductesScreen extends StatelessWidget {
         )
       ],
     );
-  }
+  }*/
 }

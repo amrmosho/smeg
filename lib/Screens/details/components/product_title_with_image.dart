@@ -1,66 +1,92 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/data_types.dart';
-import 'package:shop_app/models/Product.dart';
-import '../../../constants.dart';
 
-class ProductTitleWithImage extends StatelessWidget {
-  const ProductTitleWithImage({
-    Key key,
-    @required this.product,
-  }) : super(key: key);
-
+class ImagesSlide extends StatefulWidget {
   final Content product;
 
+  const ImagesSlide({Key key, this.product}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kDefultpadding),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            this.product.title,
-            style: TextStyle(color: Colors.white),
-          ),
-          Text(
-            this.product.title,
-            style: Theme.of(context)
-                .textTheme
-                .headline4
-                .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 50),
-                child: RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(text: "Pris\n"),
-                      TextSpan(
-                          text: "\$${this.product.price}",
-                          style: Theme.of(context).textTheme.headline4.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold)),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(width: kDefultpadding),
-              Expanded(
-                child: Hero(
-                  tag: "${product.id}",
-                  child: Image.asset(
-                    this.product.image,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              )
-            ],
-          )
-        ],
+  _ImagesSlideState createState() => _ImagesSlideState(product);
+}
+
+class _ImagesSlideState extends State<ImagesSlide> {
+  final Content product;
+  int currentPage = 1;
+  _ImagesSlideState(this.product);
+
+  Container slideImage(String img) {
+    return Container(
+      child: Image.asset(
+        img,
+        fit: BoxFit.fitHeight,
       ),
     );
+  }
+
+  List<Widget> dashs;
+  List<Widget> myimages;
+  @override
+  Widget build(BuildContext context) {
+    myimages = List();
+    dashs = List();
+
+    if (product.images != null) {
+      int ind = 0;
+      for (String img in this.product.images.split(",")) {
+        myimages.add(
+          slideImage(img),
+        );
+        dashs.add(
+          Container(
+            height: 5,
+            width: (currentPage == ind) ? 40 : 20,
+            margin: EdgeInsets.all(3),
+            decoration: BoxDecoration(
+              color: (currentPage == ind) ? Colors.white : INSPrimaryColor,
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.withOpacity(0.1),
+                    spreadRadius: 5,
+                    blurRadius: 5,
+                    offset: Offset(0, 3))
+              ],
+            ),
+          ),
+        );
+        ind++;
+      }
+    }
+
+    return Column(children: [
+      Expanded(
+        child: Hero(
+          tag: "${product.id}",
+          child: this.product.images == null
+              ? Image.asset(
+                  this.product.image,
+                  fit: BoxFit.fill,
+                )
+              : PageView(
+                  controller: PageController(),
+                  onPageChanged: (value) {
+                    setState(() {
+                      currentPage = value;
+                    });
+                  },
+                  children: myimages),
+        ),
+      ),
+      Container(
+        height: 20,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: dashs,
+        ),
+      )
+    ]);
   }
 }

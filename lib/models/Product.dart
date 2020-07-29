@@ -3,77 +3,84 @@ import 'package:shop_app/ins/data_types.dart';
 
 List<Content> categories = [
   Content(
+    id: 1,
     title: "Appliances",
     image: "assets/categories/appliances.svg",
   ),
   Content(
+    id: 2,
     title: "Coffee Maker",
     image: "assets/categories/dishwasher.svg",
   ),
   Content(
+    id: 7,
+    title: "Washers",
+    image: "assets/categories/dishwasher.svg",
+  ),
+  Content(
+    id: 3,
     title: "Cooker",
     image: "assets/categories/appliances.svg",
   ),
   Content(
+    id: 4,
     title: "Dishwasher",
     image: "assets/categories/dishwasher.svg",
   ),
   Content(
+    id: 5,
     title: "Fredge",
     image: "assets/categories/dishwasher.svg",
   ),
   Content(
+    id: 6,
     title: "Toaster",
     image: "assets/categories/redge.svg",
   ),
   Content(
-    title: "Wash machine",
+    id: 5,
+    cat_id: "7",
+    title: "Fredge",
+    image: "assets/categories/dishwasher.svg",
+  ),
+  Content(
+    id: 6,
+    cat_id: "7",
+    title: "Toaster",
     image: "assets/categories/redge.svg",
   ),
-];
-
-List<Content> news = [
   Content(
-    description: dummyText,
-    image: "assets/images/ads_1.jpeg",
+    id: 8,
+    title: "POPULAR PRODUCTS",
+    image: "assets/categories/appliances.svg",
   ),
   Content(
-    description: dummyText,
-    image: "assets/images/ads_2.jpg",
+    id: 9,
+    title: "Week Promotion",
+    image: "assets/categories/appliances.svg",
   ),
   Content(
-    description: dummyText,
-    image: "assets/images/ads_3.jpg",
-  ),
-  Content(
-    description: dummyText,
-    image: "assets/images/ads_4.jpg",
-  ),
-  Content(
-    description: dummyText,
-    image: "assets/images/ads_5.jpg",
+    id: 10,
+    title: "New PRODUCTS",
+    image: "assets/categories/appliances.svg",
   ),
 ];
 
 List<Content> products = [
   Content(
       id: 1,
-      title: "Office Code",
+      images:
+          "assets/images/washers/slb147_1.jpg,assets/images/washers/slb147_2.jpg,assets/images/washers/slb147_3.jpg",
+      cat_id: "8,7,9",
+      title: "lst147",
       price: 234,
       size: 12,
       description: dummyText,
-      image: "assets/images/bag_1.png",
-      color: Color(0xFF3D82AE)),
-  Content(
-      id: 2,
-      title: "Belt Bag",
-      price: 234,
-      size: 8,
-      description: dummyText,
-      image: "assets/images/bag_2.png",
-      color: Color(0xFFD3A984)),
+      image: "assets/images/washers/lst147_thum.png",
+      color: Color(0xFFcccccc)),
   Content(
       id: 3,
+      cat_id: "7",
       title: "Hang Top",
       price: 234,
       size: 10,
@@ -85,6 +92,7 @@ List<Content> products = [
       title: "Old Fashion",
       price: 234,
       size: 11,
+      cat_id: "4,8,7",
       description: dummyText,
       image: "assets/images/bag_4.png",
       color: Color(0xFFE6B398)),
@@ -93,11 +101,13 @@ List<Content> products = [
       title: "Office Code",
       price: 234,
       size: 12,
+      cat_id: "9,8,7",
       description: dummyText,
       image: "assets/images/bag_5.png",
       color: Color(0xFFFB7883)),
   Content(
     id: 6,
+    cat_id: "9,8,7",
     title: "Office Code",
     price: 234,
     size: 12,

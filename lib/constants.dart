@@ -17,6 +17,8 @@ const Color INSDefultLebalColor = INSPrimaryColor;
 
 const Color INSDefultTextColor = Color(0xFFBDBDBD);
 
+const Color INSDefultScreenBackground = Colors.black;
+
 /** #region  nav_bar*/
 
 const INSNavBackground = Colors.white;

@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shop_app/app_components/screen_title.dart';
+import 'package:shop_app/Screens/category/category.dart';
+import 'package:shop_app/Screens/home/components/categories_list.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/components/ins_cards_list.dart';
+import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/ins/ui/ina_inputs.dart';
 import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/models/news.dart';
 
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // MediaQuery.of(context).size;
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -23,30 +28,31 @@ class Body extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 NewsArea(),
-                SizedBox(height: 32),
-                CategoriesArea(),
-                SizedBox(height: 32),
-                INSCardsList(
-                  title: "Most poplery",
-                  press: () => {},
-                  listHeight: 200,
-                  contents: products,
+                CategoriesList(
+                  cat_id: 0,
                 ),
+                buildInsCardsListData(8, 200, 150),
                 SizedBox(height: 32),
-                INSCardsList(
-                  title: "New Porducts",
-                  press: () => {},
-                  listHeight: 400,
-                  contents: products,
-                ),
+                buildInsCardsListData(9, 400, 300),
                 SizedBox(height: 32),
-                INSCardsList(title: "675", press: () => {}, contents: products),
+                buildInsCardsListData(10, 200, 150),
                 SizedBox(height: kDefultpadding),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+
+  INSCardsList buildInsCardsListData(
+      int catid, double height, double cardWidth) {
+    return INSCardsList(
+      title: INSData.getContentByID(categories, catid).title,
+      press: () => {},
+      listHeight: height,
+      cardWidth: cardWidth,
+      contents: INSData.getContentByCatID(products, catid),
     );
   }
 }
@@ -86,63 +92,6 @@ class NewsArea extends StatelessWidget {
                   ),
                 ),
               ),
-            ]),
-          );
-        },
-      ),
-    );
-  }
-}
-
-class CategoriesArea extends StatelessWidget {
-  const CategoriesArea({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    double _width = 80;
-    return Container(
-      height: 90,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
-        itemBuilder: (context, index) {
-          return Container(
-            width: _width,
-            padding: const EdgeInsets.all(4.0),
-            child: Column(children: [
-              Container(
-                width: _width,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.1),
-                        spreadRadius: 5,
-                        blurRadius: 5,
-                        offset: Offset(0, 3))
-                  ],
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(INSDefultRadius / 2),
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: SvgPicture.asset(
-                    categories[index].image,
-                    width: 40,
-                    color: INSPrimaryColor,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Text(
-                  categories[index].title,
-                  style: TextStyle(fontSize: 10),
-                ),
-              )
             ]),
           );
         },

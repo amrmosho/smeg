@@ -12,7 +12,11 @@ class INSCardsList extends StatelessWidget {
     this.press,
     this.listHeight,
     this.contents,
+    this.cardWidth,
   }) : super(key: key);
+
+  final double cardWidth;
+
   final String title;
   final List<Content> contents;
   final String more;
@@ -57,6 +61,7 @@ class INSCardsList extends StatelessWidget {
         ListBody(
           contents: contents,
           listHeight: listHeight,
+          cardWidth: cardWidth,
         )
       ],
     );
@@ -64,10 +69,12 @@ class INSCardsList extends StatelessWidget {
 }
 
 class ListBody extends StatelessWidget {
+  final double cardWidth;
   const ListBody({
     Key key,
     this.listHeight,
     this.contents,
+    this.cardWidth,
   }) : super(key: key);
 
   final double listHeight;
@@ -78,10 +85,12 @@ class ListBody extends StatelessWidget {
       height: (listHeight == null) ? INSListCardSHeight : listHeight,
       child: ListView.builder(
         addAutomaticKeepAlives: false,
-        itemCount: products.length,
+        itemCount: contents.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => ItemCard(
-            product: contents[index], listCardDefultMargin: this.listHeight),
+            cardWidth: cardWidth,
+            product: contents[index],
+            listCardDefultMargin: this.listHeight),
       ),
     );
   }
@@ -90,15 +99,23 @@ class ListBody extends StatelessWidget {
 class ItemCard extends StatelessWidget {
   final Function press;
   final int index;
-  final Content product;
+  final double cardWidth;
   final double listCardDefultMargin;
-  ItemCard({this.index, this.product, this.press, this.listCardDefultMargin});
+  final Content product;
+
+  ItemCard(
+      {this.index,
+      this.product,
+      this.press,
+      this.listCardDefultMargin,
+      this.cardWidth});
   double listCardDefultMargi = 5;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: press,
       child: Container(
+        width: this.cardWidth == null ? 150 : this.cardWidth,
         margin:
             const EdgeInsets.symmetric(horizontal: INSListCardDefultPadding),
         padding: const EdgeInsets.all(0),
@@ -111,6 +128,7 @@ class ItemCard extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
+                width: double.infinity,
                 padding: const EdgeInsets.all(INSListCardImageDefultPadding),
                 decoration: BoxDecoration(
                   color: this.product.color,
@@ -118,8 +136,13 @@ class ItemCard extends StatelessWidget {
                       BorderRadius.circular(INSListCardDefultImageBorderRadius),
                 ),
                 child: Container(
-                    //  tag: "${product.id}",
-                    child: Image.asset(this.product.image)),
+                  padding: EdgeInsets.all(8),
+                  child: Image.asset(
+                    this.product.image,
+                    fit: BoxFit.fitHeight,
+                  ),
+                  //width: cardWidth,
+                ),
               ),
             ),
             (this.product.title == null)

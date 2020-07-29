@@ -67,7 +67,10 @@ class ScreenTitle extends StatelessWidget {
                     ]),
                   ),
                 ),
-                Image.asset("assets/images/smeg_logo.png")
+                Image.asset(
+                  "assets/images/smeg_logo.png",
+                  width: 180,
+                )
               ],
             ),
           ),
