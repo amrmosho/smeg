@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shop_app/Screens/cart/cart.dart';
 import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/models/session.dart';
 
 import '../../../constants.dart';
 
@@ -28,7 +30,9 @@ class AddToCart extends StatelessWidget {
               border: Border.all(color: product.color),
             ),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, CartScreen.id);
+              },
               icon: SvgPicture.asset(
                 "assets/icons/cart.svg",
                 color: product.color,
@@ -42,9 +46,12 @@ class AddToCart extends StatelessWidget {
                   color: product.color,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25)),
-                  onPressed: () {},
+                  onPressed: () {
+                    product.num = SessionCartItemNum;
+                    cart.add(product);
+                  },
                   child: Text(
-                    "Buy NOW".toUpperCase(),
+                    " Add To Cart ".toUpperCase(),
                     style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                   ),
                 )),

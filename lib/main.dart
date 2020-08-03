@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/Screens/details/details_screen.dart';
 import 'package:shop_app/Screens/products/products.dart';
 import 'package:shop_app/Screens/start/start.dart';
+import 'Screens/cart/cart.dart';
 import 'constants.dart';
 import 'Screens/home/home.dart';
 
@@ -20,6 +21,8 @@ class MyApp extends StatelessWidget {
         HomeScreen.id: (context) => HomeScreen(),
         ProductesScreen.id: (context) => ProductesScreen(),
         DetaillsScreen.id: (context) => DetaillsScreen(),
+        CartScreen.id: (context) => CartScreen(),
+        StartScreen.id: (context) => StartScreen(),
       },
       theme: ThemeData(
         textTheme: Theme.of(context).textTheme.apply(bodyColor: kTextColor),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class Content {
   final int price, size, id;
+  int num;
 
   final String image, title, description, cat_id, images;
   final Color color;
@@ -15,6 +16,7 @@ class Content {
     this.price,
     this.size,
     this.color,
+    this.num,
   });
 }
 

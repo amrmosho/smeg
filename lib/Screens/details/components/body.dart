@@ -10,8 +10,8 @@ import 'descrition.dart';
 
 class Body extends StatelessWidget {
   final Content product;
-
   const Body({Key key, this.product}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

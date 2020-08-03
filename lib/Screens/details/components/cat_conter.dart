@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/ins/data_types.dart';
-import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/models/session.dart';
 
 import '../../../constants.dart';
 
@@ -14,7 +14,6 @@ class CartCounter extends StatefulWidget {
 }
 
 class _CartCounterState extends State<CartCounter> {
-  int itemsNum = 0;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -22,9 +21,9 @@ class _CartCounterState extends State<CartCounter> {
         buildOutlineButton(
           icon: Icon(Icons.remove),
           onpress: () {
-            if (itemsNum > 1) {
+            if (SessionCartItemNum > 1) {
               setState(() {
-                itemsNum--;
+                SessionCartItemNum--;
               });
             }
           },
@@ -32,7 +31,7 @@ class _CartCounterState extends State<CartCounter> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefultpadding / 2),
           child: Text(
-            itemsNum.toString(),
+            SessionCartItemNum.toString(),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
@@ -40,7 +39,7 @@ class _CartCounterState extends State<CartCounter> {
           icon: Icon(Icons.add),
           onpress: () {
             setState(() {
-              itemsNum++;
+              SessionCartItemNum++;
             });
           },
         ),

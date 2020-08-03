@@ -9,6 +9,8 @@ class DetaillsScreen extends StatelessWidget {
   static String id = "detaills";
 
   const DetaillsScreen({Key key, this.product}) : super(key: key);
+
+  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(

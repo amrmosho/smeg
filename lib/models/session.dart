@@ -1,0 +1,1 @@
+var SessionCartItemNum = 1;

@@ -18,8 +18,14 @@ class Body extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(
+            margin: EdgeInsets.symmetric(
                 vertical: INSDefultpadding, horizontal: INSDefultpadding / 4),
+            padding: EdgeInsets.only(
+              top: INSDefultpadding,
+              bottom: INSDefultpadding * 2,
+              right: INSDefultpadding / 4,
+              left: INSDefultpadding / 4,
+            ),
             decoration: BoxDecoration(
                 color: Color(0xfff0eef0),
                 borderRadius:

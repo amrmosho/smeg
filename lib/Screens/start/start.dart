@@ -6,11 +6,10 @@ import 'package:shop_app/Screens/home/home.dart';
 import 'package:shop_app/Screens/menu/menu.dart';
 import 'package:shop_app/Screens/products/products.dart';
 import 'package:shop_app/app_components/screen_title.dart';
-import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/components/my_bottom_nav_bar.dart';
-import 'package:shop_app/Screens/home/components/body.dart';
 
 class StartScreen extends StatefulWidget {
+  static String id = "start";
   @override
   _StratScreenState createState() => _StratScreenState();
 }

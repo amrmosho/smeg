@@ -17,6 +17,7 @@ class ItemCard extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
+              width: double.infinity,
               padding: const EdgeInsets.all(kDefultpadding),
               decoration: BoxDecoration(
                 color: this.product.color,
