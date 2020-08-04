@@ -4,16 +4,39 @@ import 'package:shop_app/Screens/cart/cart.dart';
 import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/models/session.dart';
+import 'dart:math' as math;
 
 import '../../../constants.dart';
 
-class AddToCart extends StatelessWidget {
+class AddToCart extends StatefulWidget {
   const AddToCart({
     Key key,
     @required this.product,
   }) : super(key: key);
 
   final Content product;
+
+  @override
+  _AddToCartState createState() => _AddToCartState();
+}
+
+class _AddToCartState extends State<AddToCart> with TickerProviderStateMixin {
+  AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 200),
+      vsync: this,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,15 +50,24 @@ class AddToCart extends StatelessWidget {
             width: 58,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18),
-              border: Border.all(color: product.color),
+              border: Border.all(color: widget.product.color),
             ),
-            child: IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, CartScreen.id);
+            child: AnimatedBuilder(
+              builder: (BuildContext context, Widget child) {
+                return Transform.scale(
+                  scale: 1 + _controller.value,
+                  child: child,
+                );
               },
-              icon: SvgPicture.asset(
-                "assets/icons/cart.svg",
-                color: product.color,
+              animation: _controller,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, CartScreen.id);
+                },
+                icon: SvgPicture.asset(
+                  "assets/icons/cart.svg",
+                  color: widget.product.color,
+                ),
               ),
             ),
           ),
@@ -43,12 +75,22 @@ class AddToCart extends StatelessWidget {
             child: SizedBox(
                 height: 50,
                 child: FlatButton(
-                  color: product.color,
+                  color: widget.product.color,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25)),
                   onPressed: () {
-                    product.num = SessionCartItemNum;
-                    cart.add(product);
+                    widget.product.num = SessionCartItemNum;
+
+                    int index =
+                        INSData.getContentIndexByID(cart, widget.product.id);
+                    if (index == -1) {
+                      cart.add(widget.product);
+                    } else {
+                      cart[index].num += SessionCartItemNum;
+                    }
+
+                    _controller.repeat(min: 1, max: 1);
+                    _controller.reverse();
                   },
                   child: Text(
                     " Add To Cart ".toUpperCase(),

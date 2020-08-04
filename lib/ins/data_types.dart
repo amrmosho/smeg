@@ -42,6 +42,10 @@ class INSData {
     return conentist.where((l) => (l.id == id)).toList()[0];
   }
 
+  static int getContentIndexByID(List<Content> conentist, int id) {
+    return conentist.indexWhere((l) => (l.id == id));
+  }
+
   static List<Content> getContentByCatID(List<Content> conentist, int cat_id) {
     if (cat_id == 0) {
       return conentist

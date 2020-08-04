@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/Screens/checkout/checkout.dart';
 import 'package:shop_app/Screens/details/details_screen.dart';
 import 'package:shop_app/Screens/products/products.dart';
 import 'package:shop_app/Screens/start/start.dart';
@@ -16,13 +17,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Flutter',
       routes: {
         HomeScreen.id: (context) => HomeScreen(),
         ProductesScreen.id: (context) => ProductesScreen(),
         DetaillsScreen.id: (context) => DetaillsScreen(),
         CartScreen.id: (context) => CartScreen(),
         StartScreen.id: (context) => StartScreen(),
+        CheckoutScreen.id: (context) => CheckoutScreen()
       },
       theme: ThemeData(
         textTheme: Theme.of(context).textTheme.apply(bodyColor: kTextColor),

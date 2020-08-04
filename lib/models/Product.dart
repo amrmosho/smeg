@@ -65,61 +65,7 @@ List<Content> categories = [
     image: "assets/categories/appliances.svg",
   ),
 ];
-List<Content> cart = [
-  Content(
-      /*
-      id: 1,
-      images:
-          "assets/images/washers/slb147_1.jpg,assets/images/washers/slb147_2.jpg,assets/images/washers/slb147_3.jpg",
-      cat_id: "7",
-      title: "Lst147",
-      price: 234,
-      size: 12,
-      num: 1,
-      description: dummyText,
-      image: "assets/images/washers/lst147_thum.png",
-      color: Color(0xFFcccccc)),
-  Content(
-      id: 3,
-      cat_id: "7,8",
-      title: "SLB127-2",
-      price: 234,
-      size: 10,
-      num: 2,
-      description: dummyText,
-      image: "assets/images/washers/slb127_2_th.png",
-      color: Color(0xFF989493)),
-  Content(
-      id: 4,
-      title: "SLB147X-2",
-      price: 234,
-      size: 11,
-      cat_id: "7,8,10",
-      description: dummyText,
-      image: "assets/images/washers/slb147_1_th.png",
-      color: Color(0xFFE6B398)),
-  Content(
-      id: 5,
-      title: "WDF147",
-      price: 234,
-      size: 12,
-      cat_id: "7,8",
-      description: dummyText,
-      num: 3,
-      image: "assets/images/washers/wdf147_th.png",
-      color: Color(0xFFFB7883)),
-  Content(
-    id: 6,
-    cat_id: "7,8",
-    title: "wdi16ba1",
-    price: 234,
-    size: 12,
-    num: 4,
-    description: dummyText,
-    image: "assets/images/washers/wdi16ba1_th.png",
-    color: Color(0xFFAEAEAE),*/
-      ),
-];
+List<Content> cart = [];
 
 List<Content> products = [
   Content(
