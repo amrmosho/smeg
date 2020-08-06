@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/ins/data_types.dart';
 
-import '../../../constants.dart';
+import '../../../../constants.dart';
 
 class ItemCard extends StatelessWidget {
   final Content product;
@@ -17,7 +17,8 @@ class ItemCard extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              padding: const EdgeInsets.all(kDefultpadding),
+              width: double.infinity,
+              padding: const EdgeInsets.all(INSDefultpadding),
               decoration: BoxDecoration(
                 color: this.product.color,
                 borderRadius: BorderRadius.circular(16),
@@ -27,7 +28,9 @@ class ItemCard extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: kDefultpadding / 4),
+            padding: const EdgeInsets.symmetric(
+                vertical: INSDefultpadding / 2,
+                horizontal: INSDefultpadding / 2),
             child: Text(
               this.product.title,
               style: TextStyle(color: kTextLightColor),

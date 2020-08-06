@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:shop_app/Screens/category/category.dart';
-import 'package:shop_app/Screens/home/components/categories_list.dart';
+import 'package:shop_app/Screens/homeScreens/home/components/categories_list.dart';
+import 'package:shop_app/Screens/productScreens/details/details_screen.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/components/ins_cards_list.dart';
 import 'package:shop_app/ins/data_types.dart';

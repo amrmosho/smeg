@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/Screens/checkout/checkout.dart';
-import 'package:shop_app/Screens/details/details_screen.dart';
-import 'package:shop_app/Screens/products/products.dart';
+import 'package:shop_app/Screens/homeScreens/products/products.dart';
+import 'package:shop_app/Screens/productScreens/cart/cart.dart';
+import 'package:shop_app/Screens/productScreens/checkout/checkout.dart';
+import 'package:shop_app/Screens/productScreens/details/details_screen.dart';
+
 import 'package:shop_app/Screens/start/start.dart';
-import 'Screens/cart/cart.dart';
+import 'Screens/homeScreens/home/home.dart';
 import 'constants.dart';
-import 'Screens/home/home.dart';
 
 void main() {
   runApp(MyApp());

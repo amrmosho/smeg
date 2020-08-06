@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shop_app/Screens/category/category.dart';
+import 'package:shop_app/Screens/productScreens/category/category.dart';
 import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/models/Product.dart';
 
-import '../../../constants.dart';
+import 'package:shop_app/constants.dart';
 
 class CategoriesList extends StatelessWidget {
   final int cat_id;

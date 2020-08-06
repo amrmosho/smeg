@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/Screens/details/details_screen.dart';
-import 'package:shop_app/Screens/home/components/categories_list.dart';
+import 'package:shop_app/Screens/productScreens/details/details_screen.dart';
+import 'package:shop_app/Screens/homeScreens/home/components/categories_list.dart';
+import 'package:shop_app/app_components/search_bar.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/models/Product.dart';
-
-import 'Item_card_xx.dart';
+import 'Item_card.dart';
 
 class Body extends StatelessWidget {
   final Content category;
@@ -25,19 +25,15 @@ class Body extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kDefultpadding),
-            child: Text(category.title,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline5
-                    .copyWith(fontWeight: FontWeight.bold)),
+          SizedBox(height: INSDefultpadding / 2),
+          SearchBar(
+            hint: " Search in " + this.category.title + " ....",
           ),
           CategoriesList(cat_id: this.category.id),
           Expanded(
             child: Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: kDefultpadding / 4),
+                  const EdgeInsets.symmetric(horizontal: kDefultpadding / 2),
               child: GridView.builder(
                 itemCount: _catdata.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

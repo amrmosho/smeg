@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/models/session.dart';
 
-import '../../../constants.dart';
+import 'package:shop_app/constants.dart';
 
 class CartCounter extends StatefulWidget {
   final Content product;

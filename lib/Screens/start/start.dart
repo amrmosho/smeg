@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shop_app/Screens/cart/cart.dart';
 import 'package:shop_app/Screens/contact/contact.dart';
-import 'package:shop_app/Screens/home/home.dart';
+import 'package:shop_app/Screens/homeScreens/home/home.dart';
+import 'package:shop_app/Screens/homeScreens/products/products.dart';
 import 'package:shop_app/Screens/menu/menu.dart';
-import 'package:shop_app/Screens/products/products.dart';
 import 'package:shop_app/app_components/screen_title.dart';
 import 'package:shop_app/ins/components/my_bottom_nav_bar.dart';
+import 'package:shop_app/ins/net.dart';
+import 'package:shop_app/models/content_categories.dart';
+import 'package:shop_app/models/data.dart';
 
 class StartScreen extends StatefulWidget {
   static String id = "start";
@@ -17,12 +19,7 @@ class StartScreen extends StatefulWidget {
 class _StratScreenState extends State<StartScreen> {
   int _index = 0;
   PageController _pageController;
-  List<Widget> SubScreens = [
-    HomeScreen(),
-    ProductesScreen(),
-    CartScreen(),
-    ConactScreen()
-  ];
+  List<Widget> SubScreens = [HomeScreen(), ProductesScreen(), ConactScreen()];
 
   double xoffest = 0;
   double yoffest = 0;
@@ -107,27 +104,8 @@ class _StratScreenState extends State<StartScreen> {
 
   @override
   void initState() {
+    AppData.chekData();
     super.initState();
     _pageController = new PageController();
   }
 }
-
-/*
-class StartScreen extends StatelessWidget {
-  // List<Widget> mypages = {HomeScreen(), ProductesScreen()};
-
-  static String id = "start";
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0XFFfafafa),
-      body: PageView(
-        controller: PageController(initialPage: 1),
-        children: [HomeScreen(), ProductesScreen()],
-      ),
-      bottomNavigationBar: INSNavbar(
-        active_index: 0,
-      ),
-    );
-  }
-}*/

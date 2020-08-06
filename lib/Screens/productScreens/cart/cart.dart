@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/Screens/menu/get_menu.dart';
+import 'package:shop_app/Screens/productScreens/checkout/checkout.dart';
 import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/models/Product.dart';
-import '../../constants.dart';
 import 'package:shop_app/app_components/main_body.dart';
+
+import '../../../constants.dart';
 
 class CartScreen extends StatefulWidget {
   static String id = "cart";
@@ -72,7 +74,9 @@ class cartBody extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         color: kPrimaryColor,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, CheckoutScreen.id);
+                        },
                         child: Text(
                           "CheckOut",
                           style: TextStyle(color: Colors.white),

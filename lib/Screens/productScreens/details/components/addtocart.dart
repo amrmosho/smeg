@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shop_app/Screens/cart/cart.dart';
+import 'package:shop_app/Screens/productScreens/cart/cart.dart';
 import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/models/session.dart';
 import 'dart:math' as math;
 
-import '../../../constants.dart';
+import 'package:shop_app/constants.dart';
 
 class AddToCart extends StatefulWidget {
   const AddToCart({

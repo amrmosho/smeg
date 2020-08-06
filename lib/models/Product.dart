@@ -93,7 +93,7 @@ List<Content> products = [
       title: "SLB147X-2",
       price: 234,
       size: 11,
-      cat_id: "7,8,10",
+      cat_id: "7,8",
       description: dummyText,
       image: "assets/images/washers/slb147_1_th.png",
       color: Color(0xFFE6B398)),
@@ -131,7 +131,7 @@ List<Content> products = [
   ),
   Content(
     id: 17,
-    cat_id: "1,9,8",
+    cat_id: "1,8",
     title: "FAB50RRD",
     price: 234,
     size: 12,
@@ -141,7 +141,7 @@ List<Content> products = [
   ),
   Content(
     id: 18,
-    cat_id: "1,9,10",
+    cat_id: "1,10",
     title: "FAB32RVEN1",
     price: 234,
     size: 12,
@@ -161,7 +161,7 @@ List<Content> products = [
   ),
   Content(
     id: 20,
-    cat_id: "1,9,10",
+    cat_id: "1,10",
     title: "FAB10RNE",
     price: 234,
     size: 12,
@@ -171,7 +171,7 @@ List<Content> products = [
   ),
   Content(
     id: 21,
-    cat_id: "1,9",
+    cat_id: "1",
     title: "FA390X2",
     price: 234,
     size: 12,
@@ -181,7 +181,7 @@ List<Content> products = [
   ),
   Content(
     id: 22,
-    cat_id: "1,9",
+    cat_id: "1",
     title: "FAB5RPB",
     price: 234,
     size: 12,
@@ -201,7 +201,7 @@ List<Content> products = [
   ),
   Content(
     id: 24,
-    cat_id: "1,9",
+    cat_id: "1",
     title: "FAB28RLI3",
     price: 234,
     size: 12,

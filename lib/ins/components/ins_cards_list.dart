@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/Screens/productScreens/details/details_screen.dart';
 import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/constants.dart';
 
@@ -88,6 +89,16 @@ class ListBody extends StatelessWidget {
         itemCount: contents.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => ItemCard(
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetaillsScreen(
+                    product: contents[index],
+                  ),
+                ),
+              );
+            },
             cardWidth: cardWidth,
             product: contents[index],
             listCardDefultMargin: this.listHeight),
@@ -137,9 +148,12 @@ class ItemCard extends StatelessWidget {
                 ),
                 child: Container(
                   padding: EdgeInsets.all(8),
-                  child: Image.asset(
-                    this.product.image,
-                    fit: BoxFit.fitHeight,
+                  child: Hero(
+                    tag: "${this.product.id}",
+                    child: Image.asset(
+                      this.product.image,
+                      fit: BoxFit.fitHeight,
+                    ),
                   ),
                   //width: cardWidth,
                 ),
