@@ -2,19 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shop_app/Screens/productScreens/category/category.dart';
 import 'package:shop_app/ins/data_types.dart';
+import 'package:shop_app/ins/net.dart';
 import 'package:shop_app/models/Product.dart';
 
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/models/products_categories.dart';
 
-class CategoriesList extends StatelessWidget {
+class CategoriesList extends StatefulWidget {
   final int cat_id;
   const CategoriesList({Key key, this.cat_id}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    List<Content> _Homecategories =
-        INSData.getContentByCatID(categories, cat_id);
+  _CategoriesListState createState() => _CategoriesListState();
+}
 
+class _CategoriesListState extends State<CategoriesList> {
+  List<ProductsCategories> _Homecategories = new List();
+
+  @override
+  void initState() {
+    super.initState();
+    ProductsCategories.get((data) {
+      setState(() {
+        _Homecategories = data;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     double _width = 78;
     return _Homecategories.length == 0
         ? Container(height: 0)
@@ -55,11 +71,25 @@ class CategoriesList extends StatelessWidget {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(8),
-                          child: SvgPicture.asset(
+                          child: FutureBuilder(
+                            future:
+                                INSNet.get_image(_Homecategories[index].image),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.done) {
+                                return Image.file(snapshot.data);
+                              } else {
+                                return CircularProgressIndicator();
+                              }
+                            },
+
+                            // Image.file(_file)
+                          ),
+                          /* child: SvgPicture.asset(
                             _Homecategories[index].image,
                             width: 40,
                             color: INSPrimaryColor,
-                          ),
+                          ),*/
                         ),
                       ),
                     ),

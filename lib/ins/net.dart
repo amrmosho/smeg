@@ -2,10 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
-import 'package:shop_app/models/content.dart';
 
 class INSNet {
   static String url = "http://smeg.sys4me.com/insapi/";
+  static String images_url = "http://smeg.sys4me.com/ins_upload/";
+
 /*
   static String url =
       "http://smeg.sys4me.com/insapi/sys_menus_items/parent_id/37/";*/
@@ -19,7 +20,6 @@ class INSNet {
     url = url == null ? INSNet.url : url;
 
     url += addToUrl == null ? "" : addToUrl;
-
     final http.Response response = await http.post(
       url,
       headers: <String, String>{
@@ -30,6 +30,7 @@ class INSNet {
 
 // If the server did return a 201 CREATED response,
     // then parse the JSON.
+
     if (response.statusCode == 200) {
       if (onDone != null) {
         onDone(jsonDecode(response.body));
@@ -90,5 +91,39 @@ class INSNet {
         onDone(file, data);
       }
     });
+  }
+
+  static Future<File> downloadFile(String url, String filename,
+      {Function onDone}) async {
+    http.Client client = new http.Client();
+    var req = await client.get(Uri.parse(url));
+    var bytes = req.bodyBytes;
+    String dir = (await getApplicationDocumentsDirectory()).path;
+    String path = '$dir/$filename';
+    File file = new File('$dir/$filename');
+    await file.writeAsBytes(bytes);
+    if (onDone != null) {
+      onDone(path);
+    }
+    return file;
+  }
+
+  static Future<File> get_image(String filename, {Function onDone}) async {
+    String dir = (await getApplicationDocumentsDirectory()).path;
+    String path = '$dir/$filename';
+    File file = new File('$dir/$filename');
+
+    if (!file.existsSync()) {
+      String url = images_url + filename;
+      http.Client client = new http.Client();
+      var req = await client.get(Uri.parse(url));
+      var bytes = req.bodyBytes;
+      await file.writeAsBytes(bytes);
+    }
+
+    if (onDone != null) {
+      onDone(path);
+    }
+    return file;
   }
 }

@@ -48,10 +48,9 @@ class SiteConfig {
       INSNet.getJsone(
           addToUrl: "/$type/$query",
           onDone: (onlineData) {
-            onDone((onlineData["version"] == cat_data[0].version));
+            var d = (onlineData[0]["version"] == cat_data[0].version);
+            onDone(d);
           });
-
-      onDone(cat_data);
     }, ISFileOntExist: (path) {
       onDone(false);
     });

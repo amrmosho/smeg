@@ -1,9 +1,10 @@
 import 'package:shop_app/ins/net.dart';
 
-//http://smeg.sys4me.com/insapi/sys_content_categories/cat_id/38/
-class ContentCategories {
+class ProductsCategories {
   static String type = "sys_content_categories";
-  static String query = "";
+  static String query = "/cat_id/38/";
+
+  static String file = "sys_products_categories";
 
   String id,
       title,
@@ -17,7 +18,7 @@ class ContentCategories {
       cat_id,
       sys_languages;
 
-  ContentCategories({
+  ProductsCategories({
     this.id,
     this.title,
     this.alias,
@@ -31,8 +32,8 @@ class ContentCategories {
     this.sys_languages,
   });
 
-  factory ContentCategories.fromJson(Map<String, dynamic> data) {
-    var c = ContentCategories(
+  factory ProductsCategories.fromJson(Map<String, dynamic> data) {
+    var c = ProductsCategories(
       id: data["id"],
       title: data["title"],
       alias: data["alias"],
@@ -69,9 +70,9 @@ class ContentCategories {
     INSNet.getJsone(
         addToUrl: "/$type/$query",
         onDone: (data) {
-          INSNet.jsonWriteData(type, data, onDone: (file, data) {
-            List<ContentCategories> cat_data = List<ContentCategories>.from(
-                data.map((data) => ContentCategories.fromJson(data)).toList());
+          INSNet.jsonWriteData(file, data, onDone: (file, data) {
+            List<ProductsCategories> cat_data = List<ProductsCategories>.from(
+                data.map((data) => ProductsCategories.fromJson(data)).toList());
 
             onDone(cat_data);
           });
@@ -79,9 +80,9 @@ class ContentCategories {
   }
 
   static void get(Function onDone) {
-    INSNet.jsonReadData(type, onDone: (data, file) {
-      List<ContentCategories> cat_data = List<ContentCategories>.from(
-          data.map((data) => ContentCategories.fromJson(data)).toList());
+    INSNet.jsonReadData(file, onDone: (data, file) {
+      List<ProductsCategories> cat_data = List<ProductsCategories>.from(
+          data.map((data) => ProductsCategories.fromJson(data)).toList());
       onDone(cat_data);
     }, ISFileOntExist: (path) {
       update(onDone: onDone);
