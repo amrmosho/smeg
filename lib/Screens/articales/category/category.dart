@@ -3,11 +3,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/Screens/productScreens/category/components/body.dart';
 import 'package:shop_app/app_components/screen_title.dart';
 import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/data_types.dart';
+import 'package:shop_app/models/products_categories.dart';
 
 class CategoryScreen extends StatelessWidget {
   static String id = "productes";
-  final Content category;
+  final ProductsCategories category;
 
   const CategoryScreen(
     this.category, {

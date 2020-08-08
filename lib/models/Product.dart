@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/ins/data_types.dart';
+import 'package:shop_app/models/products.dart';
+
+List<Product> cart = [];
 
 List<Content> categories = [
   Content(
@@ -8,12 +11,12 @@ List<Content> categories = [
     image: "assets/categories/appliances.svg",
   ),
   Content(
-    id: 5,
+    id: 2,
     title: "Fredge",
     image: "assets/categories/dishwasher.svg",
   ),
   Content(
-    id: 2,
+    id: 3,
     title: "Coffee Maker",
     image: "assets/categories/dishwasher.svg",
   ),
@@ -65,7 +68,6 @@ List<Content> categories = [
     image: "assets/categories/appliances.svg",
   ),
 ];
-List<Content> cart = [];
 
 List<Content> products = [
   Content(

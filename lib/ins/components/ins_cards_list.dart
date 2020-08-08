@@ -1,28 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/Screens/productScreens/details/details_screen.dart';
-import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/ins/net.dart';
+import 'package:shop_app/models/products.dart';
 
-import '../data_types.dart';
-
-class INSCardsList extends StatelessWidget {
+class INSCardsList extends StatefulWidget {
   const INSCardsList({
     Key key,
     this.title,
     this.more,
     this.press,
     this.listHeight,
-    this.contents,
+    this.cat_id,
     this.cardWidth,
   }) : super(key: key);
 
   final double cardWidth;
-
+  final String cat_id;
   final String title;
-  final List<Content> contents;
   final String more;
   final Function press;
   final double listHeight;
+
+  @override
+  _INSCardsListState createState() => _INSCardsListState();
+}
+
+class _INSCardsListState extends State<INSCardsList> {
+  List<Product> contents = new List();
+
+  @override
+  void initState() {
+    super.initState();
+
+    Product.get((data) {
+      setState(() {
+        contents = data;
+      });
+    }, cat_id: widget.cat_id.toString());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,26 +49,26 @@ class INSCardsList extends StatelessWidget {
               left: kDefaultPadding, bottom: kDefaultPadding),
           child: Row(
             children: <Widget>[
-              (title == null)
+              (widget.title == null)
                   ? Text("")
                   : Text(
-                      title,
+                      widget.title,
                       style: Theme.of(context)
                           .textTheme
                           .headline6
                           .copyWith(color: INSDefultLebalColor),
                     ),
               Spacer(),
-              (more == null)
+              (widget.more == null)
                   ? Text("")
                   : FlatButton(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                       color: kPrimaryColor,
-                      onPressed: press,
+                      onPressed: widget.press,
                       child: Text(
-                        more,
+                        widget.more,
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
@@ -61,8 +77,8 @@ class INSCardsList extends StatelessWidget {
         ),
         ListBody(
           contents: contents,
-          listHeight: listHeight,
-          cardWidth: cardWidth,
+          listHeight: widget.listHeight,
+          cardWidth: widget.cardWidth,
         )
       ],
     );
@@ -79,30 +95,33 @@ class ListBody extends StatelessWidget {
   }) : super(key: key);
 
   final double listHeight;
-  final List<Content> contents;
+  final List<Product> contents;
   @override
   Widget build(BuildContext context) {
+    var cc = contents.length;
     return Container(
       height: (listHeight == null) ? INSListCardSHeight : listHeight,
-      child: ListView.builder(
-        addAutomaticKeepAlives: false,
-        itemCount: contents.length,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => ItemCard(
-            press: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetaillsScreen(
-                    product: contents[index],
-                  ),
-                ),
-              );
-            },
-            cardWidth: cardWidth,
-            product: contents[index],
-            listCardDefultMargin: this.listHeight),
-      ),
+      child: (contents.length < 2)
+          ? Container()
+          : ListView.builder(
+              addAutomaticKeepAlives: false,
+              itemCount: contents.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => ItemCard(
+                  press: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetaillsScreen(
+                          product: contents[index],
+                        ),
+                      ),
+                    );
+                  },
+                  cardWidth: cardWidth,
+                  product: contents[index],
+                  listCardDefultMargin: this.listHeight),
+            ),
     );
   }
 }
@@ -112,7 +131,7 @@ class ItemCard extends StatelessWidget {
   final int index;
   final double cardWidth;
   final double listCardDefultMargin;
-  final Content product;
+  final Product product;
 
   ItemCard(
       {this.index,
@@ -139,25 +158,19 @@ class ItemCard extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(INSListCardImageDefultPadding),
-                decoration: BoxDecoration(
-                  color: this.product.color,
-                  borderRadius:
-                      BorderRadius.circular(INSListCardDefultImageBorderRadius),
-                ),
-                child: Container(
-                  padding: EdgeInsets.all(8),
-                  child: Hero(
-                    tag: "${this.product.id}",
-                    child: Image.asset(
-                      this.product.image,
-                      fit: BoxFit.fitHeight,
-                    ),
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(INSListCardImageDefultPadding),
+                  decoration: BoxDecoration(
+                    color: Color(this.product.color),
+                    borderRadius: BorderRadius.circular(
+                        INSListCardDefultImageBorderRadius),
                   ),
-                  //width: cardWidth,
-                ),
-              ),
+                  child:
+
+                      // _Homecategories[index].image
+
+                      INSNet.getImage(this.product.image,
+                          heroTag: this.product.id)),
             ),
             (this.product.title == null)
                 ? Text("")

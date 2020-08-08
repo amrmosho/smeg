@@ -3,9 +3,11 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/data_types.dart';
+import 'package:shop_app/ins/net.dart';
+import 'package:shop_app/models/products.dart';
 
 class ImagesSlide extends StatefulWidget {
-  final Content product;
+  final Product product;
 
   const ImagesSlide({Key key, this.product}) : super(key: key);
 
@@ -14,7 +16,7 @@ class ImagesSlide extends StatefulWidget {
 }
 
 class _ImagesSlideState extends State<ImagesSlide> {
-  final Content product;
+  final Product product;
   int currentPage = 1;
   _ImagesSlideState(this.product);
 
@@ -63,23 +65,7 @@ class _ImagesSlideState extends State<ImagesSlide> {
 
     return Column(children: [
       Expanded(
-        child: Hero(
-          tag: "${product.id}",
-          child: this.product.images == null
-              ? Image.asset(
-                  this.product.image,
-                  fit: BoxFit.fill,
-                )
-              : PageView(
-                  controller: PageController(),
-                  onPageChanged: (value) {
-                    setState(() {
-                      currentPage = value;
-                    });
-                  },
-                  children: myimages),
-        ),
-      ),
+          child: INSNet.getImage(this.product.image, heroTag: this.product.id)),
       Container(
         height: 20,
         child: Row(

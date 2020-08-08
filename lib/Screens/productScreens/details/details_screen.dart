@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shop_app/Screens/productScreens/details/components/body.dart';
 import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/data_types.dart';
+import 'package:shop_app/models/products.dart';
 
 class DetaillsScreen extends StatelessWidget {
-  final Content product;
+  final Product product;
   static String id = "detaills";
 
   const DetaillsScreen({Key key, this.product}) : super(key: key);
@@ -15,7 +15,7 @@ class DetaillsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
-      backgroundColor: product.color,
+      backgroundColor: Color(product.color),
       body: Body(
         product: this.product,
       ),
@@ -24,7 +24,7 @@ class DetaillsScreen extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: product.color,
+      backgroundColor: Color(product.color),
       elevation: 0,
       leading: IconButton(
         icon: SvgPicture.asset(

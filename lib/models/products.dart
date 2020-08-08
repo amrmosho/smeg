@@ -1,29 +1,39 @@
+import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/ins/net.dart';
 
-class ProductsCategories {
-  static String type = "com_icac_products_categories";
+//http://smeg.sys4me.com/insapi/sys_content_categories/cat_id/38/
+class Product {
+  static String type = "com_icac_products";
   static String query = "";
-
-  static String file = "sys_products_categories";
 
   String id,
       title,
       alias,
       des,
       image,
+      th_image,
+      images,
+      body,
+      cat_id,
       sys_order,
       sys_disabled,
       sys_modified,
       sys_created,
-      cat_id,
       sys_languages;
 
-  ProductsCategories({
+  int color, num, price;
+
+  Product({
     this.id,
     this.title,
     this.alias,
     this.des,
+    this.body,
     this.image,
+    this.color,
+    this.price,
+    this.th_image,
+    this.images,
     this.sys_order,
     this.sys_disabled,
     this.sys_modified,
@@ -32,13 +42,18 @@ class ProductsCategories {
     this.sys_languages,
   });
 
-  factory ProductsCategories.fromJson(Map<String, dynamic> data) {
-    var c = ProductsCategories(
+  factory Product.fromJson(Map<String, dynamic> data) {
+    var c = Product(
       id: data["id"],
       title: data["title"],
       alias: data["alias"],
+      color: int.parse(data["color"]),
+      price: int.parse(data["price"]),
       des: data["des"],
+      body: data["body"],
       image: data["image"],
+      th_image: data["th_image"],
+      images: data["images"],
       sys_order: data["sys_order"],
       sys_disabled: data["sys_disabled"],
       sys_modified: data["sys_modified"],
@@ -56,7 +71,10 @@ class ProductsCategories {
       "title": title,
       "alias": alias,
       "des": des,
+      "body": body,
       "image": image,
+      "th_image": th_image,
+      "images": images,
       "sys_order": sys_order,
       "sys_disabled": sys_disabled,
       "sys_modified": sys_modified,
@@ -70,9 +88,9 @@ class ProductsCategories {
     INSNet.getJsone(
         addToUrl: "/$type/$query",
         onDone: (data) {
-          INSNet.jsonWriteData(file, data, onDone: (file, data) {
-            List<ProductsCategories> cat_data = List<ProductsCategories>.from(
-                data.map((data) => ProductsCategories.fromJson(data)).toList());
+          INSNet.jsonWriteData(type, data, onDone: (file, data) {
+            List<Product> cat_data = List<Product>.from(
+                data.map((data) => Product.fromJson(data)).toList());
 
             onDone(cat_data);
           });
@@ -80,35 +98,26 @@ class ProductsCategories {
   }
 
   static void getData(Function onDone) {
-    INSNet.jsonReadData(file, onDone: (data, file) {
-      List<ProductsCategories> cat_data = List<ProductsCategories>.from(
-          data.map((data) => ProductsCategories.fromJson(data)).toList());
+    //INSData.getContentByCatID(products, catid),
+
+    INSNet.jsonReadData(type, onDone: (data, file) {
+      List<Product> cat_data = List<Product>.from(
+          data.map((data) => Product.fromJson(data)).toList());
       onDone(cat_data);
     }, ISFileOntExist: (path) {
       update(onDone: onDone);
     });
   }
 
-  static void get({Function onDone, String cat_id, String id}) {
+  static void get(Function onDone, {String cat_id}) {
+    //INSData.getContentByCatID(products, catid),
     getData((data) {
       if (cat_id != null) {
-        if (cat_id == "0") {
-          data = data
-              .where((l) =>
-                  l.cat_id == null ||
-                  l.cat_id.contains("0") ||
-                  l.cat_id.contains("null") ||
-                  l.cat_id.contains(""))
-              .toList();
-        } else {
-          data = data
-              .where((l) =>
-                  l.cat_id != null &&
-                  l.cat_id.split(",").contains(cat_id.toString()))
-              .toList();
-        }
-      } else if (id != null) {
-        data = data.where((l) => l.id.contains(id.toString())).toList();
+        data = data
+            .where((l) =>
+                l.cat_id != null &&
+                l.cat_id.split(",").contains(cat_id.toString()))
+            .toList();
       }
       onDone(data);
     });

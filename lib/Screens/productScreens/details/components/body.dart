@@ -3,13 +3,14 @@ import 'package:shop_app/Screens/productScreens/details/components/colors_and_si
 import 'package:shop_app/Screens/productScreens/details/components/product_title_with_image.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/data_types.dart';
+import 'package:shop_app/models/products.dart';
 
 import 'addtocart.dart';
 import 'counter_and_fav_btn.dart';
 import 'descrition.dart';
 
 class Body extends StatelessWidget {
-  final Content product;
+  final Product product;
   const Body({Key key, this.product}) : super(key: key);
 
   @override

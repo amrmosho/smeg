@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/ins/data_types.dart';
-import 'package:shop_app/models/Product.dart';
+
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/models/products.dart';
 
 class ColorsAndSize extends StatelessWidget {
   const ColorsAndSize({
@@ -9,7 +9,7 @@ class ColorsAndSize extends StatelessWidget {
     @required this.product,
   }) : super(key: key);
 
-  final Content product;
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +36,14 @@ class ColorsAndSize extends StatelessWidget {
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            /* children: [
               Text("size"),
               Text("${product.size} cm",
                   style: Theme.of(context)
                       .textTheme
                       .headline6
                       .copyWith(fontWeight: FontWeight.bold)),
-            ],
+            ],*/
           ),
         )
       ],

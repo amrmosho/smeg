@@ -1,14 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/Screens/homeScreens/home/components/categories_list.dart';
-import 'package:shop_app/Screens/productScreens/details/details_screen.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/components/ins_cards_list.dart';
-import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/ins/ui/ina_inputs.dart';
-import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/models/news.dart';
+import 'package:shop_app/models/products_categories.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  List<ProductsCategories> _Homecategories = new List();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    ProductsCategories.get(onDone: (data) {
+      setState(() {
+        _Homecategories = data;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // MediaQuery.of(context).size;
@@ -34,7 +51,7 @@ class Body extends StatelessWidget {
               children: [
                 NewsArea(),
                 CategoriesList(
-                  cat_id: 0,
+                  cat_id: "0",
                 ),
                 buildInsCardsListData(8, 200, 150),
                 SizedBox(height: 32),
@@ -52,13 +69,15 @@ class Body extends StatelessWidget {
 
   INSCardsList buildInsCardsListData(
       int catid, double height, double cardWidth) {
+    List<ProductsCategories> data =
+        _Homecategories.where((l) => l.id.contains(catid.toString())).toList();
+
     return INSCardsList(
-      title: INSData.getContentByID(categories, catid).title,
-      press: () => {},
-      listHeight: height,
-      cardWidth: cardWidth,
-      contents: INSData.getContentByCatID(products, catid),
-    );
+        title: data[0].title,
+        press: () => {},
+        listHeight: height,
+        cardWidth: cardWidth,
+        cat_id: catid.toString());
   }
 }
 

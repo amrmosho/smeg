@@ -48,10 +48,7 @@ class INSData {
 
   static List<Content> getContentByCatID(List<Content> conentist, int cat_id) {
     if (cat_id == 0) {
-      return conentist
-          .where(
-              (l) => /*l.cat_id.split(",").contains("0") ||*/ l.cat_id == null)
-          .toList();
+      return conentist.where((l) => l.cat_id == null).toList();
     } else {
       return conentist
           .where((l) =>

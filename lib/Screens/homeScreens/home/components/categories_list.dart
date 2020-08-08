@@ -1,32 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:shop_app/Screens/productScreens/category/category.dart';
-import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/models/Product.dart';
-
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/models/products_categories.dart';
 
 class CategoriesList extends StatefulWidget {
-  final int cat_id;
+  final String cat_id;
   const CategoriesList({Key key, this.cat_id}) : super(key: key);
 
   @override
-  _CategoriesListState createState() => _CategoriesListState();
+  _CategoriesListState createState() => _CategoriesListState(cat_id: cat_id);
 }
 
 class _CategoriesListState extends State<CategoriesList> {
   List<ProductsCategories> _Homecategories = new List();
+  final String cat_id;
+
+  _CategoriesListState({this.cat_id});
 
   @override
   void initState() {
     super.initState();
-    ProductsCategories.get((data) {
-      setState(() {
-        _Homecategories = data;
-      });
-    });
+
+    ProductsCategories.get(
+        onDone: (data) {
+          setState(() {
+            _Homecategories = data;
+          });
+        },
+        cat_id: this.cat_id);
   }
 
   @override
@@ -70,27 +72,9 @@ class _CategoriesListState extends State<CategoriesList> {
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: FutureBuilder(
-                            future:
-                                INSNet.get_image(_Homecategories[index].image),
-                            builder: (context, snapshot) {
-                              if (snapshot.connectionState ==
-                                  ConnectionState.done) {
-                                return Image.file(snapshot.data);
-                              } else {
-                                return CircularProgressIndicator();
-                              }
-                            },
-
-                            // Image.file(_file)
-                          ),
-                          /* child: SvgPicture.asset(
-                            _Homecategories[index].image,
-                            width: 40,
-                            color: INSPrimaryColor,
-                          ),*/
-                        ),
+                            padding: const EdgeInsets.all(8),
+                            child:
+                                INSNet.getImage(_Homecategories[index].image)),
                       ),
                     ),
                     Padding(

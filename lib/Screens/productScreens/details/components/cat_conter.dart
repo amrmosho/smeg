@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/ins/data_types.dart';
+import 'package:shop_app/models/products.dart';
 import 'package:shop_app/models/session.dart';
 
 import 'package:shop_app/constants.dart';
 
 class CartCounter extends StatefulWidget {
-  final Content product;
+  final Product product;
 
   const CartCounter({Key key, this.product}) : super(key: key);
 

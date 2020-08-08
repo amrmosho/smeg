@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/ins/net.dart';
 import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/models/products.dart';
 
 class CheckoutScreen extends StatefulWidget {
   static String id = "checkout";
@@ -41,7 +42,7 @@ class _CheckOutBodyState extends State<CheckOutBody> {
   String _gettotalNumber() {
     int r = 0;
 
-    for (Content pro in cart) {
+    for (Product pro in cart) {
       if (pro.num != null) r += pro.num;
     }
 
@@ -50,7 +51,7 @@ class _CheckOutBodyState extends State<CheckOutBody> {
 
   String _gettotalPrice() {
     int r = 0;
-    for (Content pro in cart) {
+    for (Product pro in cart) {
       if (pro.price != null && pro.num != null) r += (pro.price * pro.num);
     }
 

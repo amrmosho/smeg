@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
@@ -125,5 +126,32 @@ class INSNet {
       onDone(path);
     }
     return file;
+  }
+
+  static Widget getImage(String filename, {Function onDone, String heroTag}) {
+    return FutureBuilder(
+      future: INSNet.get_image(filename),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return Container(
+            padding: EdgeInsets.all(8),
+            child: (heroTag == null)
+                ? Image.file(
+                    snapshot.data,
+                    fit: BoxFit.fitHeight,
+                  )
+                : Hero(
+                    tag: "${heroTag}",
+                    child: Image.file(
+                      snapshot.data,
+                      fit: BoxFit.fitHeight,
+                    ),
+                  ),
+          );
+        } else {
+          return CircularProgressIndicator();
+        }
+      },
+    );
   }
 }

@@ -5,17 +5,34 @@ import 'package:shop_app/app_components/search_bar.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/models/products.dart';
+import 'package:shop_app/models/products_categories.dart';
 import 'Item_card.dart';
 
-class Body extends StatelessWidget {
-  final Content category;
+class Body extends StatefulWidget {
+  final ProductsCategories category;
 
   const Body(this.category, {Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    List<Content> _catdata = INSData.getContentByCatID(products, category.id);
+  _BodyState createState() => _BodyState();
+}
 
+List<Product> _catdata = new List();
+
+class _BodyState extends State<Body> {
+  @override
+  void initState() {
+    super.initState();
+    Product.get((data) {
+      setState(() {
+        _catdata = data;
+      });
+    }, cat_id: widget.category.id);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
           vertical: INSDefultpadding, horizontal: INSDefultpadding / 4),
@@ -27,9 +44,9 @@ class Body extends StatelessWidget {
         children: [
           SizedBox(height: INSDefultpadding / 2),
           SearchBar(
-            hint: " Search in " + this.category.title + " ....",
+            hint: " Search in " + this.widget.category.title + " ....",
           ),
-          CategoriesList(cat_id: this.category.id),
+          CategoriesList(cat_id: this.widget.category.id),
           Expanded(
             child: Padding(
               padding:

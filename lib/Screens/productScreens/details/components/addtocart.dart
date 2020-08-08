@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:shop_app/Screens/productScreens/cart/cart.dart';
 import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/models/products.dart';
 import 'package:shop_app/models/session.dart';
 import 'dart:math' as math;
 
@@ -14,7 +15,7 @@ class AddToCart extends StatefulWidget {
     @required this.product,
   }) : super(key: key);
 
-  final Content product;
+  final Product product;
 
   @override
   _AddToCartState createState() => _AddToCartState();
@@ -50,7 +51,7 @@ class _AddToCartState extends State<AddToCart> with TickerProviderStateMixin {
             width: 58,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18),
-              border: Border.all(color: widget.product.color),
+              border: Border.all(color: Color(widget.product.color)),
             ),
             child: AnimatedBuilder(
               builder: (BuildContext context, Widget child) {
@@ -66,7 +67,7 @@ class _AddToCartState extends State<AddToCart> with TickerProviderStateMixin {
                 },
                 icon: SvgPicture.asset(
                   "assets/icons/cart.svg",
-                  color: widget.product.color,
+                  color: Color(widget.product.color),
                 ),
               ),
             ),
@@ -75,14 +76,15 @@ class _AddToCartState extends State<AddToCart> with TickerProviderStateMixin {
             child: SizedBox(
                 height: 50,
                 child: FlatButton(
-                  color: widget.product.color,
+                  color: Color(widget.product.color),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25)),
                   onPressed: () {
                     widget.product.num = SessionCartItemNum;
 
                     int index =
-                        INSData.getContentIndexByID(cart, widget.product.id);
+                        cart.indexWhere((l) => (l.id == widget.product.id));
+
                     if (index == -1) {
                       cart.add(widget.product);
                     } else {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/Screens/menu/get_menu.dart';
 import 'package:shop_app/Screens/productScreens/checkout/checkout.dart';
-import 'package:shop_app/ins/data_types.dart';
+import 'package:shop_app/constants.dart';
+import 'package:shop_app/ins/net.dart';
 import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/app_components/main_body.dart';
-
-import '../../../constants.dart';
+import 'package:shop_app/models/products.dart';
 
 class CartScreen extends StatefulWidget {
   static String id = "cart";
@@ -95,7 +95,7 @@ class cartBody extends StatelessWidget {
   String _gettotalNumber() {
     int r = 0;
 
-    for (Content pro in cart) {
+    for (Product pro in cart) {
       if (pro.num != null) r += pro.num;
     }
 
@@ -104,7 +104,7 @@ class cartBody extends StatelessWidget {
 
   String _gettotalPrice() {
     int r = 0;
-    for (Content pro in cart) {
+    for (Product pro in cart) {
       if (pro.price != null && pro.num != null) r += (pro.price * pro.num);
     }
 
@@ -154,13 +154,7 @@ class _CartBodyState extends State<CartBody> {
           height: 120,
           child: Row(
             children: [
-              Expanded(
-                flex: 1,
-                child: Image.asset(
-                  cart[index].image,
-                  fit: BoxFit.fitHeight,
-                ),
-              ),
+              Expanded(flex: 1, child: INSNet.getImage(cart[index].image)),
               Expanded(
                 flex: 2,
                 child: ListView(

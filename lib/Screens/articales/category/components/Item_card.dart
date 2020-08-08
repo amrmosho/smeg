@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/ins/data_types.dart';
-
-import '../../../../constants.dart';
+import 'package:shop_app/constants.dart';
+import 'package:shop_app/ins/net.dart';
+import 'package:shop_app/models/products.dart';
 
 class ItemCard extends StatelessWidget {
-  final Content product;
+  final Product product;
   final Function press;
   ItemCard({this.product, this.press});
 
@@ -17,15 +17,14 @@ class ItemCard extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(kDefultpadding),
-              decoration: BoxDecoration(
-                color: this.product.color,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Hero(
-                  tag: "${product.id}", child: Image.asset(this.product.image)),
-            ),
+                width: double.infinity,
+                padding: const EdgeInsets.all(kDefultpadding),
+                decoration: BoxDecoration(
+                  color: Color(this.product.color),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child:
+                    INSNet.getImage(this.product.image, heroTag: product.id)),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
