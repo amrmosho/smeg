@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shop_app/Screens/productScreens/cart/cart.dart';
 import 'package:shop_app/ins/data_types.dart';
-import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/models/Product_xxx.dart';
+import 'package:shop_app/models/cart.dart';
 import 'package:shop_app/models/products.dart';
 import 'package:shop_app/models/session.dart';
 import 'dart:math' as math;
@@ -80,17 +81,7 @@ class _AddToCartState extends State<AddToCart> with TickerProviderStateMixin {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25)),
                   onPressed: () {
-                    widget.product.num = SessionCartItemNum;
-
-                    int index =
-                        cart.indexWhere((l) => (l.id == widget.product.id));
-
-                    if (index == -1) {
-                      cart.add(widget.product);
-                    } else {
-                      cart[index].num += SessionCartItemNum;
-                    }
-
+                    Cart.add(widget.product, SessionCartItemNum);
                     _controller.repeat(min: 1, max: 1);
                     _controller.reverse();
                   },

@@ -5,7 +5,8 @@ import 'package:shop_app/constants.dart';
 import 'package:http/http.dart' as http;
 import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/models/Product_xxx.dart';
+import 'package:shop_app/models/cart.dart';
 import 'package:shop_app/models/products.dart';
 
 class CheckoutScreen extends StatefulWidget {
@@ -39,25 +40,6 @@ class _CheckOutBodyState extends State<CheckOutBody> {
   String _email = "", _name = "";
   final _fromKey = GlobalKey<FormState>();
 
-  String _gettotalNumber() {
-    int r = 0;
-
-    for (Product pro in cart) {
-      if (pro.num != null) r += pro.num;
-    }
-
-    return r.toString();
-  }
-
-  String _gettotalPrice() {
-    int r = 0;
-    for (Product pro in cart) {
-      if (pro.price != null && pro.num != null) r += (pro.price * pro.num);
-    }
-
-    return r.toString();
-  }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -77,9 +59,9 @@ class _CheckOutBodyState extends State<CheckOutBody> {
                       TextSpan(
                         text: "Number : ",
                       ),
-                      TextSpan(text: _gettotalNumber() + "\n"),
+                      TextSpan(text: Cart.gettotalNumber() + "\n"),
                       TextSpan(text: "TOTAL :   "),
-                      TextSpan(text: _gettotalPrice() + "\n"),
+                      TextSpan(text: Cart.gettotalPrice() + "\n"),
                     ]),
               ),
             ),

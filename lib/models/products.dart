@@ -109,14 +109,16 @@ class Product {
     });
   }
 
-  static void get(Function onDone, {String cat_id}) {
+  static void get(Function onDone, {String cat_id, String title}) {
     //INSData.getContentByCatID(products, catid),
     getData((data) {
       if (cat_id != null) {
         data = data
             .where((l) =>
-                l.cat_id != null &&
-                l.cat_id.split(",").contains(cat_id.toString()))
+                (cat_id == null ||
+                    l.cat_id.split(",").contains(cat_id.toString())) &&
+                (title == null ||
+                    l.title.toUpperCase().contains(title.toUpperCase())))
             .toList();
       }
       onDone(data);

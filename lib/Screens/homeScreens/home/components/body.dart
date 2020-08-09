@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/Screens/articales/category/category.dart';
 import 'package:shop_app/Screens/homeScreens/home/components/categories_list.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/components/ins_cards_list.dart';
@@ -51,6 +52,13 @@ class _BodyState extends State<Body> {
               children: [
                 NewsArea(),
                 CategoriesList(
+                  onTap: (v) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CategoryScreen(v)),
+                    );
+                  },
                   cat_id: "0",
                 ),
                 buildInsCardsListData(8, 200, 150),

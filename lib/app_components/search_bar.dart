@@ -6,9 +6,14 @@ class SearchBar extends StatelessWidget {
     Key key,
     this.size,
     this.hint,
+    this.onChanged,
+    this.textSearcController,
   }) : super(key: key);
 
   final Size size;
+  final Function onChanged;
+  final TextEditingController textSearcController;
+
   final String hint;
   @override
   Widget build(BuildContext context) {
@@ -45,7 +50,8 @@ class SearchBar extends StatelessWidget {
               ),
               Expanded(
                 child: TextField(
-                  onChanged: (value) {},
+                  controller: textSearcController,
+                  onChanged: onChanged,
                   decoration: InputDecoration(
                     hintText: this.hint == null ? "Search..." : this.hint,
                     hintStyle: TextStyle(

@@ -4,7 +4,7 @@ import 'package:shop_app/Screens/homeScreens/home/components/categories_list.dar
 import 'package:shop_app/app_components/search_bar.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/data_types.dart';
-import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/models/Product_xxx.dart';
 import 'package:shop_app/models/products.dart';
 import 'Item_card.dart';
 

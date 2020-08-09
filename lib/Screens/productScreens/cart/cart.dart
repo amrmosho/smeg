@@ -3,8 +3,8 @@ import 'package:shop_app/Screens/menu/get_menu.dart';
 import 'package:shop_app/Screens/productScreens/checkout/checkout.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/app_components/main_body.dart';
+import 'package:shop_app/models/cart.dart';
 import 'package:shop_app/models/products.dart';
 
 class CartScreen extends StatefulWidget {
@@ -62,9 +62,9 @@ class cartBody extends StatelessWidget {
                                 TextSpan(
                                   text: "Number : ",
                                 ),
-                                TextSpan(text: _gettotalNumber() + "\n"),
+                                TextSpan(text: Cart.gettotalNumber() + "\n"),
                                 TextSpan(text: "TOTAL :   "),
-                                TextSpan(text: _gettotalPrice() + "\n"),
+                                TextSpan(text: Cart.gettotalPrice() + "\n"),
                               ]),
                         ),
                       ),
@@ -90,25 +90,6 @@ class cartBody extends StatelessWidget {
         )
       ],
     );
-  }
-
-  String _gettotalNumber() {
-    int r = 0;
-
-    for (Product pro in cart) {
-      if (pro.num != null) r += pro.num;
-    }
-
-    return r.toString();
-  }
-
-  String _gettotalPrice() {
-    int r = 0;
-    for (Product pro in cart) {
-      if (pro.price != null && pro.num != null) r += (pro.price * pro.num);
-    }
-
-    return r.toString();
   }
 }
 

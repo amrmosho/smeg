@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/models/products.dart';
 
-List<Product> cart = [];
-
+//List<Product> cart = [];
+/*
 List<Content> categories = [
   Content(
     id: 1,
@@ -217,3 +217,4 @@ List<Content> products = [
 
 String dummyText =
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since. When an unknown printer took a galley.";
+*/
