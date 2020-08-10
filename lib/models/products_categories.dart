@@ -5,13 +5,12 @@ class ProductsCategories {
   static String query = "";
 
   static String file = "sys_products_categories";
-
+  int sys_order;
   String id,
       title,
       alias,
       des,
       image,
-      sys_order,
       sys_disabled,
       sys_modified,
       sys_created,
@@ -39,7 +38,7 @@ class ProductsCategories {
       alias: data["alias"],
       des: data["des"],
       image: data["image"],
-      sys_order: data["sys_order"],
+      sys_order: int.parse(data["sys_order"]),
       sys_disabled: data["sys_disabled"],
       sys_modified: data["sys_modified"],
       sys_created: data["sys_created"],
@@ -110,7 +109,12 @@ class ProductsCategories {
       } else if (id != null) {
         data = data.where((l) => l.id.contains(id.toString())).toList();
       }
-      onDone(data);
+
+      List<ProductsCategories> _categories = data;
+      _categories.sort((l, b) {
+        return l.sys_order.compareTo(b.sys_order);
+      });
+      onDone(_categories);
     });
   }
 }

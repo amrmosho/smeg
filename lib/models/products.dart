@@ -15,13 +15,12 @@ class Product {
       images,
       body,
       cat_id,
-      sys_order,
       sys_disabled,
       sys_modified,
       sys_created,
       sys_languages;
 
-  int color, num, price;
+  int color, num, price, sys_order;
 
   Product({
     this.id,
@@ -47,14 +46,14 @@ class Product {
       id: data["id"],
       title: data["title"],
       alias: data["alias"],
-      color: int.parse(data["color"]),
-      price: int.parse(data["price"]),
+      color: int.parse(data["color"].replaceAll("#", "0XFF")),
+      price: (data["price"] == "") ? 0 : int.parse(data["price"]),
       des: data["des"],
       body: data["body"],
       image: data["image"],
       th_image: data["th_image"],
       images: data["images"],
-      sys_order: data["sys_order"],
+      sys_order: int.parse(data["sys_order"]),
       sys_disabled: data["sys_disabled"],
       sys_modified: data["sys_modified"],
       sys_created: data["sys_created"],
@@ -121,6 +120,13 @@ class Product {
                     l.title.toUpperCase().contains(title.toUpperCase())))
             .toList();
       }
+
+      List<Product> _categories = data;
+      _categories.sort((l, b) {
+        return l.sys_order.compareTo(b.sys_order);
+      });
+      onDone(_categories);
+
       onDone(data);
     });
   }

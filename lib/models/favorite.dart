@@ -3,8 +3,7 @@ import 'package:shop_app/ins/net.dart';
 class Favorite {
   String id;
   DateTime date;
-
-  String file = "";
+  static String fileName = "";
 
   Favorite({this.id});
 
@@ -32,15 +31,18 @@ class Favorite {
   }
 
   List<dynamic> tojson() {
-    return {
+    List<dynamic> a = List();
+    a.add({
       "id": id,
-    };
+    });
+
+    return a;
   }
 
   remove() {}
 
   static void update(List<dynamic> data, {Function onDone}) {
-    INSNet.jsonWriteData(file, data, onDone: (file, data) {
+    INSNet.jsonWriteData(fileName, data, onDone: (file, data) {
       List<Favorite> cat_data = List<Favorite>.from(
           data.map((data) => Favorite.fromJson(data)).toList());
 
@@ -49,7 +51,7 @@ class Favorite {
   }
 
   static void get({Function onDone, Function ISFileOntExist}) {
-    INSNet.jsonReadData(file, onDone: (data, file) {
+    INSNet.jsonReadData(fileName, onDone: (data, file) {
       List<Favorite> cat_data = List<Favorite>.from(
           data.map((data) => Favorite.fromJson(data)).toList());
       onDone(cat_data);

@@ -165,12 +165,8 @@ class ItemCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(
                         INSListCardDefultImageBorderRadius),
                   ),
-                  child:
-
-                      // _Homecategories[index].image
-
-                      INSNet.getImage(this.product.image,
-                          heroTag: this.product.id)),
+                  child: INSNet.getImage(this.product.image,
+                      heroTag: this.product.id, padding: 16)),
             ),
             (this.product.title == null)
                 ? Text("")

@@ -128,13 +128,15 @@ class INSNet {
     return file;
   }
 
-  static Widget getImage(String filename, {Function onDone, String heroTag}) {
+  static Widget getImage(String filename,
+      {double height, double padding = 8, Function onDone, String heroTag}) {
     return FutureBuilder(
       future: INSNet.get_image(filename),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return Container(
-            padding: EdgeInsets.all(8),
+            height: height,
+            padding: EdgeInsets.all(padding),
             child: (heroTag == null)
                 ? Image.file(
                     snapshot.data,
@@ -153,5 +155,18 @@ class INSNet {
         }
       },
     );
+  }
+
+  static Future<bool> is_connected({Function onCheck}) async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        onCheck(true);
+        return true;
+      }
+    } on SocketException catch (_) {
+      onCheck(false);
+      return false;
+    }
   }
 }

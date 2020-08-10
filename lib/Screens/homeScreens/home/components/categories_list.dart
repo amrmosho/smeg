@@ -87,8 +87,8 @@ class _CategoriesListState extends State<CategoriesList> {
                                   ),
                         child: Padding(
                             padding: const EdgeInsets.all(8),
-                            child:
-                                INSNet.getImage(_Homecategories[index].image)),
+                            child: INSNet.getImage(_Homecategories[index].image,
+                                height: 55, padding: 4)),
                       ),
                     ),
                     Padding(
