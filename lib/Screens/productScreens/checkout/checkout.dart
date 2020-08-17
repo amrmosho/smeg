@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/Screens/menu/get_menu.dart';
 import 'package:shop_app/app_components/main_body.dart';
 import 'package:shop_app/constants.dart';
-import 'package:http/http.dart' as http;
-import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/models/Product_xxx.dart';
+import 'package:shop_app/ins/ui/ins_ui.dart';
 import 'package:shop_app/models/cart.dart';
-import 'package:shop_app/models/products.dart';
 
 class CheckoutScreen extends StatefulWidget {
   static String id = "checkout";
@@ -37,7 +34,7 @@ class CheckOutBody extends StatefulWidget {
 }
 
 class _CheckOutBodyState extends State<CheckOutBody> {
-  String _email = "", _name = "";
+  String _email = "", _name = "", _address = "";
   final _fromKey = GlobalKey<FormState>();
 
   @override
@@ -76,8 +73,7 @@ class _CheckOutBodyState extends State<CheckOutBody> {
                       labelText: "Name *",
                       border: OutlineInputBorder(),
                     ),
-                    validator: (value) =>
-                        value.isEmpty ? 'Please enter some text' : Null,
+                    validator: _validate,
                     onSaved: (input) => _name = input,
                   ),
                 ),
@@ -87,9 +83,8 @@ class _CheckOutBodyState extends State<CheckOutBody> {
                       labelText: "Email *",
                       border: OutlineInputBorder(),
                     ),
-                    validator: (value) =>
-                        value.isEmpty ? 'Please enter some text' : Null,
-                    onSaved: (input) => _name = input,
+                    validator: _validate,
+                    onSaved: (input) => _email = input,
                   ),
                 ),
                 InputCont(
@@ -101,9 +96,8 @@ class _CheckOutBodyState extends State<CheckOutBody> {
                       labelText: "Address *",
                       border: OutlineInputBorder(),
                     ),
-                    validator: (value) =>
-                        value.isEmpty ? 'Please enter some text' : Null,
-                    onSaved: (input) => _name = input,
+                    validator: _validate,
+                    onSaved: (input) => _address = input,
                   ),
                 ),
                 Padding(
@@ -128,17 +122,7 @@ class _CheckOutBodyState extends State<CheckOutBody> {
                           child: Text('Send To WhatsAPP'),
                         ),
                         RaisedButton(
-                          onPressed: () {
-                            INSNet.getJsone(
-                                data: {"mydata": "data"},
-                                onDone: (data) {
-                                  print(data);
-                                });
-
-                            if (_fromKey.currentState.validate()) {
-                              _fromKey.currentState.save();
-                            }
-                          },
+                          onPressed: _submit,
                           child: Text('Submit'),
                         ),
                       ],
@@ -170,5 +154,38 @@ class _CheckOutBodyState extends State<CheckOutBody> {
         padding: EdgeInsets.all(0),
         decoration: _dec,
         child: child);
+  }
+
+  String _validate(value) {
+    if (value.isEmpty) {
+      return 'Please enter some text';
+    } else {
+      return null;
+    }
+  }
+
+  void _submit() {
+    var obj = {};
+
+    var k = _fromKey.currentState.validate();
+    if (_fromKey.currentState.validate()) {
+      _fromKey.currentState.save();
+      obj["email"] = _email;
+      obj["name"] = _name;
+      obj["items"] = Cart.getDataJsone();
+
+      INSNet.getJsone(
+          addToUrl: "insert/com_orders/",
+          data: obj,
+          onDone: (data) {
+            if (data != false) {
+              INSUI.successSnack(
+                  context, "Your order has been sent successfly");
+            } else {
+              INSUI.errorSnack(
+                  context, "Your order sent faild,Something want wrong!");
+            }
+          });
+    }
   }
 }

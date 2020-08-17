@@ -18,32 +18,40 @@ class INSNet {
       Object data,
       Function onDone,
       Function onGetError}) async {
-    url = url == null ? INSNet.url : url;
+    try {
+      url = url == null ? INSNet.url : url;
 
-    url += addToUrl == null ? "" : addToUrl;
-    final http.Response response = await http.post(
-      url,
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(data),
-    );
+      url += addToUrl == null ? "" : addToUrl;
+
+      final http.Response response = await http.post(
+        url,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(data),
+      );
 
 // If the server did return a 201 CREATED response,
-    // then parse the JSON.
+      // then parse the JSON.
 
-    if (response.statusCode == 200) {
-      if (onDone != null) {
-        onDone(jsonDecode(response.body));
+      if (response.statusCode == 200) {
+        if (onDone != null) {
+          onDone(jsonDecode(response.body));
+        }
+        return jsonDecode(response.body);
+      } else {
+        // If the server did not return a 201 CREATED response,
+        // then throw an exception.
+
+        onGetError ?? onGetError(json.decode(response.body));
+
+        // throw Exception('Failed to get Connent to net  .');
       }
-      return jsonDecode(response.body);
-    } else {
-      // If the server did not return a 201 CREATED response,
-      // then throw an exception.
+    } on Exception catch (_) {
+      // throw Exception('Failed to get Connent to net  .');
+      print("Failed to get Connent to net.");
 
-      onGetError ?? onGetError(json.decode(response.body));
-
-      throw Exception('Failed to create album.');
+      onDone(false);
     }
   }
 
@@ -86,7 +94,8 @@ class INSNet {
         file.writeAsStringSync(jsonEncode(data));
       } else {
         print("create File ");
-        file = jsonCreateFile(path, jsonEncode(data));
+        String dd = jsonEncode(data);
+        file = INSNet.jsonCreateFile(path, dd);
       }
       if (onDone != null) {
         onDone(file, data);
@@ -129,7 +138,11 @@ class INSNet {
   }
 
   static Widget getImage(String filename,
-      {double height, double padding = 8, Function onDone, String heroTag}) {
+      {double height,
+      double padding = 8,
+      Function onDone,
+      String heroTag,
+      BoxFit fit}) {
     return FutureBuilder(
       future: INSNet.get_image(filename),
       builder: (context, snapshot) {
@@ -140,13 +153,13 @@ class INSNet {
             child: (heroTag == null)
                 ? Image.file(
                     snapshot.data,
-                    fit: BoxFit.fitHeight,
+                    fit: fit == null ? BoxFit.fitHeight : fit,
                   )
                 : Hero(
                     tag: "${heroTag}",
                     child: Image.file(
                       snapshot.data,
-                      fit: BoxFit.fitHeight,
+                      fit: fit == null ? BoxFit.fitHeight : fit,
                     ),
                   ),
           );
@@ -160,12 +173,13 @@ class INSNet {
   static Future<bool> is_connected({Function onCheck}) async {
     try {
       final result = await InternetAddress.lookup('google.com');
+
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        onCheck(true);
+        if (onCheck != null) onCheck(true);
         return true;
       }
     } on SocketException catch (_) {
-      onCheck(false);
+      if (onCheck != null) onCheck ?? onCheck(false);
       return false;
     }
   }

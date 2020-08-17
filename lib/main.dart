@@ -3,6 +3,7 @@ import 'package:shop_app/Screens/homeScreens/products/products.dart';
 import 'package:shop_app/Screens/productScreens/cart/cart.dart';
 import 'package:shop_app/Screens/productScreens/checkout/checkout.dart';
 import 'package:shop_app/Screens/productScreens/details/details_screen.dart';
+import 'package:shop_app/Screens/start/splash.dart';
 
 import 'package:shop_app/Screens/start/start.dart';
 import 'Screens/homeScreens/home/home.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter',
       routes: {
+        SplashScreen.id: (context) => SplashScreen(),
         HomeScreen.id: (context) => HomeScreen(),
         ProductesScreen.id: (context) => ProductesScreen(),
         DetaillsScreen.id: (context) => DetaillsScreen(),
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: StartScreen(),
+      home: SplashScreen(),
     );
   }
 }

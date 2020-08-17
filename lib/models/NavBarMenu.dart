@@ -5,11 +5,11 @@ List<ButtonData> NavMenu = [
   ButtonData(icon: Icons.home, title: "Home"),
   ButtonData(icon: Icons.shopping_cart, title: "products"),
   ButtonData(
-    icon: Icons.contact_phone,
-    title: "Contact",
+    icon: Icons.book,
+    title: "News",
   ),
   ButtonData(
     icon: Icons.exit_to_app,
-    title: "Logout",
+    title: "Contact",
   )
 ];

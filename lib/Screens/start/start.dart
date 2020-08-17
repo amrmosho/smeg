@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shop_app/Screens/contact/contact.dart';
 import 'package:shop_app/Screens/homeScreens/home/home.dart';
+import 'package:shop_app/Screens/homeScreens/news/news.dart';
 import 'package:shop_app/Screens/homeScreens/products/products.dart';
 import 'package:shop_app/Screens/menu/menu.dart';
 import 'package:shop_app/app_components/screen_title.dart';
@@ -19,7 +20,12 @@ class StartScreen extends StatefulWidget {
 class _StratScreenState extends State<StartScreen> {
   int _index = 0;
   PageController _pageController;
-  List<Widget> SubScreens = [HomeScreen(), ProductesScreen(), ConactScreen()];
+  List<Widget> SubScreens = [
+    HomeScreen(),
+    ProductesScreen(),
+    NewsScreen(),
+    ConactScreen()
+  ];
 
   double xoffest = 0;
   double yoffest = 0;
@@ -104,7 +110,6 @@ class _StratScreenState extends State<StartScreen> {
 
   @override
   void initState() {
-    AppData.chekData();
     super.initState();
     _pageController = new PageController();
   }

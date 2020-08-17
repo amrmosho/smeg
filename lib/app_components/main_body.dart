@@ -16,6 +16,7 @@ class AppBody extends StatelessWidget {
     Size s = MediaQuery.of(context).size;
 
     return Container(
+        margin: EdgeInsets.all(8),
         height: (height == null) ? s.height - 150 : height,
         padding: EdgeInsets.symmetric(
             vertical: INSDefultpadding, horizontal: INSDefultpadding / 4),

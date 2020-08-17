@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/data_types.dart';
 import 'package:shop_app/ins/net.dart';
 import 'package:shop_app/models/products.dart';
 

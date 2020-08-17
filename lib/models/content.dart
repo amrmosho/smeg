@@ -1,9 +1,9 @@
 import 'package:shop_app/ins/net.dart';
 
-//http://smeg.sys4me.com/insapi/sys_content_categories/cat_id/38/
+//http://smeg.sys4me.com/insapi/sys_content/cat_id/38/
 class Content {
   static String type = "sys_content";
-  static String query = "cat_id/39/";
+  static String query = "";
 
   String id,
       title,
@@ -90,13 +90,38 @@ class Content {
         });
   }
 
-  static void get(Function onDone) {
+  static void getData(Function onDone) {
+    //INSData.getContentByCatID(products, catid),
+
     INSNet.jsonReadData(type, onDone: (data, file) {
       List<Content> cat_data = List<Content>.from(
           data.map((data) => Content.fromJson(data)).toList());
       onDone(cat_data);
     }, ISFileOntExist: (path) {
       update(onDone: onDone);
+    });
+  }
+
+  static void get(Function onDone, {String cat_id, String title}) {
+    //INSData.getContentByCatID(products, catid),
+    getData((data) {
+      if (cat_id != null) {
+        data = data
+            .where((l) =>
+                (cat_id == null ||
+                    l.cat_id.split(",").contains(cat_id.toString())) &&
+                (title == null ||
+                    l.title.toUpperCase().contains(title.toUpperCase())))
+            .toList();
+      }
+
+      List<Content> _categories = data;
+      _categories.sort((l, b) {
+        return l.sys_order.compareTo(b.sys_order);
+      });
+      onDone(_categories);
+
+      onDone(data);
     });
   }
 }

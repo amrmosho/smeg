@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:shop_app/models/products.dart';
 
 List<Product> cart = [];
@@ -25,6 +27,16 @@ class Cart {
     }
 
     return r.toString();
+  }
+
+  static String getDataJsone() {
+    int r = 0;
+    var data = {};
+    for (Product pro in cart) {
+      data[pro.id] = {"id": pro.id, "q": pro.num};
+    }
+
+    return jsonEncode(data);
   }
 
   static String gettotalPrice() {

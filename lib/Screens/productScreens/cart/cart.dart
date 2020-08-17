@@ -84,7 +84,7 @@ class cartBody extends StatelessWidget {
                       ),
                     ],
                   ),
-                  height: 70)
+                  height: 54)
             ],
           ),
         )
