@@ -1,4 +1,5 @@
 import 'package:shop_app/ins/net.dart';
+import 'package:shop_app/models/products.dart';
 
 class Favorite {
   String id;
@@ -6,6 +7,16 @@ class Favorite {
   static String fileName = "favorite";
 
   Favorite({this.id});
+
+  static void remove(String id, {Function onDone}) {
+    Favorite.get(onDone: (data) {
+      List<Favorite> d = data;
+      int i = d.indexWhere((element) => element.id == id);
+      d.removeAt(i);
+      var aa = d.map((l) => l.tojson()).toList();
+      Favorite.update(aa);
+    });
+  }
 
   static void add(String id) {
     Favorite.get(onDone: (data) {
@@ -35,8 +46,6 @@ class Favorite {
     };
   }
 
-  remove() {}
-
   static void update(List<dynamic> data, {Function onDone}) {
     INSNet.jsonWriteData(fileName, data, onDone: (file, data) {
       List<Favorite> cat_data = List<Favorite>.from(
@@ -52,5 +61,21 @@ class Favorite {
           data.map((data) => Favorite.fromJson(data)).toList());
       onDone(cat_data);
     }, ISFileOntExist: ISFileOntExist);
+  }
+
+  static void getData(Function onDone) {
+    List<Product> r = new List();
+    Favorite.get(onDone: (data) {
+      List<String> ids = List();
+      for (Favorite f in data) {
+        ids.add(f.id);
+      }
+
+      Product.get((productsdata) {
+        onDone(productsdata);
+      }, ids: ids);
+    }, ISFileOntExist: (a) {
+      onDone(false);
+    });
   }
 }

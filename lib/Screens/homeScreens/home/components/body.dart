@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:shop_app/Screens/articales/category/category.dart';
 import 'package:shop_app/Screens/homeScreens/home/components/categories_list.dart';
@@ -8,7 +6,6 @@ import 'package:shop_app/ins/components/ins_cards_list.dart';
 import 'package:shop_app/ins/net.dart';
 import 'package:shop_app/ins/ui/ina_inputs.dart';
 import 'package:shop_app/models/content.dart';
-import 'package:shop_app/models/news_xxxx.dart';
 import 'package:shop_app/models/products_categories.dart';
 
 class Body extends StatefulWidget {

@@ -32,11 +32,12 @@ class _ConactScreenState extends State<ConactScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
-          child: AppBody(
-        child: Container(
-            width: double.infinity,
-            child: Expanded(child: HtmlWidget(_string))),
-      )),
+        child: AppBody(
+          child: Container(
+              width: double.infinity,
+              child: Expanded(child: HtmlWidget(_string))),
+        ),
+      ),
     );
   }
 }
