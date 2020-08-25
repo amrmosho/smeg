@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:shop_app/Screens/start/start.dart';
 import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/ins/net.dart';
@@ -23,20 +24,20 @@ class _SplashScreenState extends State<SplashScreen> {
         bool goon = true;
         switch (stat) {
           case SheckDataStatus.haveData:
-            t = "No internet used ofline Data";
+            t = INSLang.get("nointernetmsg");
             break;
 
           case SheckDataStatus.disconnect:
-            t = "Error :( Data need internet to continue";
+            t = INSLang.get("errormsg");
             goon = false;
             break;
 
           case SheckDataStatus.sameVersion:
-            t = "Data has latest version :)";
+            t = INSLang.get("datalatestversion");
 
             break;
           case SheckDataStatus.updated:
-            t = "data updated successfully to latest version";
+            t = INSLang.get("updateddatamsg");
 
             break;
         }
@@ -48,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
-  String _stat = "check data....";
+  String _stat = INSLang.get("checkdata");
 
   @override
   Widget build(BuildContext context) {

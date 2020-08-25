@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/Screens/productScreens/category/components/body.dart';
 import 'package:shop_app/app_components/screen_title.dart';
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/models/products_categories.dart';
 
 class CategoryScreen extends StatelessWidget {
@@ -22,9 +23,9 @@ class CategoryScreen extends StatelessWidget {
         children: [
           SizedBox(height: 30),
           Container(
-            height: 100,
+            height: 105,
             child: ScreenTitle(
-              title: "Category",
+              title: INSLang.get("category"),
               subtitle: category.title,
             ),
           ),

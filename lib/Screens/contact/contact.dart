@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/app_components/main_body.dart';
+import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/ins/net.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
@@ -11,7 +12,7 @@ class ConactScreen extends StatefulWidget {
 }
 
 class _ConactScreenState extends State<ConactScreen> {
-  String _string = "loading....";
+  String _string = INSLang.get("loading");
   String data_id = "135";
 
   @override

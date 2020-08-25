@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/Screens/menu/get_menu.dart';
 import 'package:shop_app/app_components/main_body.dart';
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/ins/net.dart';
 import 'package:shop_app/ins/ui/ins_ui.dart';
 import 'package:shop_app/ins/utils.dart';
@@ -17,7 +18,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   Widget build(BuildContext context) {
     return AddMenuScreen(
-      title: "Checkout",
+      title: INSLang.get("checkout"),
       Screen: AppBody(
         child: CheckOutBody(),
       ),
@@ -55,7 +56,7 @@ class _CheckOutBodyState extends State<CheckOutBody> {
                     children: [
                       Cart.gettotalNumber() > 0
                           ? TextSpan(
-                              text: "Number : ",
+                              text: INSLang.get("number"),
                             )
                           : TextSpan(text: ""),
                       Cart.gettotalNumber() > 0
@@ -63,7 +64,7 @@ class _CheckOutBodyState extends State<CheckOutBody> {
                               text: Cart.gettotalNumber().toString() + "\n")
                           : TextSpan(text: ""),
                       Cart.gettotalPrice() > 0
-                          ? TextSpan(text: "TOTAL :   ")
+                          ? TextSpan(text: INSLang.get("total"))
                           : TextSpan(text: ""),
                       Cart.gettotalPrice() > 0
                           ? TextSpan(
@@ -80,7 +81,7 @@ class _CheckOutBodyState extends State<CheckOutBody> {
                 InputCont(
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: "Name *",
+                      labelText: INSLang.get("name"),
                       border: OutlineInputBorder(),
                     ),
                     validator: _validate,
@@ -90,7 +91,7 @@ class _CheckOutBodyState extends State<CheckOutBody> {
                 InputCont(
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: "Email *",
+                      labelText:INSLang.get("email"),
                       border: OutlineInputBorder(),
                     ),
                     validator: _validate,
@@ -103,7 +104,7 @@ class _CheckOutBodyState extends State<CheckOutBody> {
                     maxLength: null,
                     maxLines: 5,
                     decoration: InputDecoration(
-                      labelText: "Address *",
+                      labelText: INSLang.get("address"),
                       border: OutlineInputBorder(),
                     ),
                     validator: _validate,
@@ -129,11 +130,11 @@ class _CheckOutBodyState extends State<CheckOutBody> {
                               _fromKey.currentState.save();
                             }
                           },
-                          child: Text('Send To WhatsAPP'),
+                          child: Text(INSLang.get('sendtowa')),
                         ),
                         RaisedButton(
                           onPressed: _submit,
-                          child: Text('Submit'),
+                          child: Text(INSLang.get('submit')),
                         ),
                       ],
                     ),
@@ -168,7 +169,7 @@ class _CheckOutBodyState extends State<CheckOutBody> {
 
   String _validate(value) {
     if (value.isEmpty) {
-      return 'Please enter some text';
+      return INSLang.get('entertext');
     } else {
       return null;
     }
@@ -193,10 +194,10 @@ class _CheckOutBodyState extends State<CheckOutBody> {
             onDone: (data) {
               if (data != false) {
                 INSUI.successSnack(
-                    context, "Your order has been sent successfly");
+                    context, INSLang.get("successfullymsg"));
               } else {
                 INSUI.errorSnack(
-                    context, "Your order sent faild,Something want wrong!");
+                    context, INSLang.get("faildmsg"));
               }
             });
       });

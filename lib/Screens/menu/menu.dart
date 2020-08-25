@@ -35,7 +35,7 @@ class _StratScreenState extends State<Menu> {
                   "assets/images/smeg_logo.png",
                   width: 80,
                 ),
-                Text("Welcome To Smeg")
+                Text(INSLang.get("welcomemsg"))
               ],
             ),
             Column(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/Screens/menu/get_menu.dart';
 import 'package:shop_app/Screens/productScreens/checkout/checkout.dart';
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/ins/net.dart';
 import 'package:shop_app/app_components/main_body.dart';
 import 'package:shop_app/models/cart.dart';
@@ -18,7 +19,7 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       backgroundColor: INSDefultScreenBackground,
       body: AddMenuScreen(
-        title: "Cart",
+        title: INSLang.get("cart"),
         act: "Cart",
         Screen: cartBody(this),
       ),
@@ -60,7 +61,7 @@ class cartBody extends StatelessWidget {
                               children: [
                                 Cart.gettotalNumber() > 0
                                     ? TextSpan(
-                                        text: "Number : ",
+                                        text: INSLang.get("number"),
                                       )
                                     : TextSpan(text: ""),
                                 Cart.gettotalNumber() > 0
@@ -69,7 +70,7 @@ class cartBody extends StatelessWidget {
                                             "\n")
                                     : TextSpan(text: ""),
                                 Cart.gettotalPrice() > 0
-                                    ? TextSpan(text: "TOTAL :   ")
+                                    ? TextSpan(text: INSLang.get("total"))
                                     : TextSpan(text: ""),
                                 Cart.gettotalPrice() > 0
                                     ? TextSpan(
@@ -88,8 +89,7 @@ class cartBody extends StatelessWidget {
                         onPressed: () {
                           Navigator.pushNamed(context, CheckoutScreen.id);
                         },
-                        child: Text(
-                          "CheckOut",
+                        child: Text(INSLang.get("checkout"),
                           style: TextStyle(color: Colors.white),
                         ),
                       ),

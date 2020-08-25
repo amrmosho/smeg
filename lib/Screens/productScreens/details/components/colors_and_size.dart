@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/models/products.dart';
 
 class ColorsAndSize extends StatelessWidget {
@@ -19,7 +20,7 @@ class ColorsAndSize extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Colors"),
+              Text( INSLang.get("colors")),
               Row(
                 children: [
                   ColorDot(

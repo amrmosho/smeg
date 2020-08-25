@@ -1,11 +1,34 @@
 {
     "check_out": "check out",
-    "home": "Home3333",
+    "home": "Home",
     "cart": "cart",
     "contactus": "contact us",
     "aboutus": "about us",
     "language": "Language",
+    "nointernetmsg": "No internet..using offline Data",
+    "errormsg": "Error..Data need internet to continue",
+    "datalatestversion": "Data has latest version :)",
+    "updateddatamsg": "data updated successfully to latest version",
+    "checkdata": "Check data...",
+    "welcomemsg": "Welcome To Smeg",
+    "welcomeback": "Welcome Back",
+    "favorites": "Favorites",
+    "myorders": "My Orders",
+    "cart": "Cart",
+    "number": "Number : ",
+    "total": "Total : ",
+    "checkout": "Check Out",
+    "name": "Name *",
+    "email": "Email *",
+    "address": "Address *",
     "en": "ُEnglish",
+    "submit": "Submit",
+    "sendtowa": "Send To WhatsAPP",
+    "successfullymsg": "Your order has been sent successfully",
+    "faildmsg": "Your order sending faild,Something went wrong!",
+    "loading" : "loading....",
+    "colors" : "Colors",
+    "entertext" : "Please enter some text",
     "ar": "عربى",
     "category": "Category",
     "searchin": "Search In",
@@ -15,6 +38,3 @@
     "settings": "Settings",
     "news": "News"
 }
-
-
-

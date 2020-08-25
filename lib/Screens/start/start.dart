@@ -51,8 +51,8 @@ class _StratScreenState extends State<StartScreen> {
                     padding: const EdgeInsets.only(top: 20),
                     child: ScreenTitle(
                       menuicon: menu_opend ? Icons.arrow_back : Icons.menu,
-                      title: "Home",
-                      subtitle: " Welcome Back",
+                      title: INSLang.get("home"),
+                      subtitle: INSLang.get("welcomeback"),
                       onMenuPress: () {
                         setState(() {
                           if (menu_opend) {

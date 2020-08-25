@@ -3,6 +3,7 @@ import 'package:shop_app/Screens/productScreens/details/details_screen.dart';
 import 'package:shop_app/Screens/homeScreens/home/components/categories_list.dart';
 import 'package:shop_app/app_components/search_bar.dart';
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/models/products.dart';
 import 'Item_card.dart';
 
@@ -42,7 +43,7 @@ class _BodyState extends State<Body> {
         children: [
           SizedBox(height: INSDefultpadding / 2),
           SearchBar(
-            hint: " Search in " + this.widget.category.title + " ....",
+            hint: INSLang.get("searchin")+ this.widget.category.title + " ....",
           ),
           CategoriesList(cat_id: this.widget.category.id),
           Expanded(

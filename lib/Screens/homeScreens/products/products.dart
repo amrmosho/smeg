@@ -4,6 +4,7 @@ import 'package:shop_app/app_components/app_cart.dart';
 import 'package:shop_app/app_components/main_body.dart';
 import 'package:shop_app/app_components/search_bar.dart';
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/ins/net.dart';
 import 'package:shop_app/models/favorite.dart';
 import 'package:shop_app/models/orders.dart';
@@ -71,9 +72,9 @@ class _ProductesScreenState extends State<ProductesScreen> {
             padding: const EdgeInsets.all(16.0),
             child: Row(
               children: [
-                myTabButton(context, "Favorites"),
+                myTabButton(context, INSLang.get("favorites")),
                 SizedBox(width: 16),
-                myTabButton(context, "Order"),
+                myTabButton(context, INSLang.get("myorders")),
               ],
             ),
           ),
