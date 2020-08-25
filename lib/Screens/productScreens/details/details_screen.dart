@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shop_app/Screens/homeScreens/home/home.dart';
+import 'package:shop_app/Screens/productScreens/cart/cart.dart';
 import 'package:shop_app/Screens/productScreens/details/components/body.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/models/products.dart';
@@ -39,7 +41,9 @@ class DetaillsScreen extends StatelessWidget {
             "assets/icons/search.svg",
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, HomeScreen.id);
+          },
           color: kTextColor,
         ),
         IconButton(
@@ -47,7 +51,9 @@ class DetaillsScreen extends StatelessWidget {
             "assets/icons/cart.svg",
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, CartScreen.id);
+          },
         ),
         SizedBox(
           width: kDefultpadding / 2,

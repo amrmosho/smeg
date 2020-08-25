@@ -1,4 +1,8 @@
+import 'dart:convert';
+
+import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/data_types.dart';
+import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/ins/net.dart';
 
 //http://smeg.sys4me.com/insapi/sys_content_categories/cat_id/38/
@@ -101,7 +105,7 @@ class Product {
 
     INSNet.jsonReadData(type, onDone: (data, file) {
       List<Product> cat_data = List<Product>.from(
-          data.map((data) => Product.fromJson(data)).toList());
+          data.map((data) => updatLang(Product.fromJson(data))).toList());
       onDone(cat_data);
     }, ISFileOntExist: (path) {
       update(onDone: onDone);
@@ -128,5 +132,34 @@ class Product {
       });
       onDone(_categories);
     });
+  }
+
+  static Product updatLang(Product data) {
+    if (language == Language.ar) {
+      if (data.sys_languages != "") {
+        Map l = jsonDecode(data.sys_languages);
+        if (l.containsKey("title")) {
+          Map ltitle = l["title"];
+          if (ltitle.containsKey("ar")) {
+            data.title = ltitle["ar"];
+          }
+        }
+
+        if (l.containsKey("des")) {
+          Map ldes = l["des"];
+          if (ldes.containsKey("ar")) {
+            data.des = ldes["ar"];
+          }
+        }
+
+        if (l.containsKey("body")) {
+          Map ldes = l["body"];
+          if (ldes.containsKey("ar")) {
+            data.body = ldes["ar"];
+          }
+        }
+      }
+    }
+    return data;
   }
 }

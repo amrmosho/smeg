@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/Screens/productScreens/details/details_screen.dart';
+import 'package:shop_app/app_components/text.dart';
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/ins/net.dart';
 import 'package:shop_app/models/products.dart';
 
@@ -47,32 +49,16 @@ class _INSCardsListState extends State<INSCardsList> {
         Padding(
           padding: const EdgeInsets.only(
               left: kDefaultPadding, bottom: kDefaultPadding),
-          child: Row(
-            children: <Widget>[
-              (widget.title == null)
-                  ? Text("")
-                  : Text(
-                      widget.title,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline6
-                          .copyWith(color: INSDefultLebalColor),
-                    ),
-              Spacer(),
-              (widget.more == null)
-                  ? Text("")
-                  : FlatButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      color: kPrimaryColor,
-                      onPressed: widget.press,
-                      child: Text(
-                        widget.more,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-            ],
+          child: INSText(
+            child: (widget.title == null)
+                ? Text("")
+                : Text(
+                    widget.title,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline6
+                        .copyWith(color: INSDefultLebalColor),
+                  ),
           ),
         ),
         ListBody(
@@ -104,6 +90,7 @@ class ListBody extends StatelessWidget {
       child: (contents.length < 2)
           ? Container()
           : ListView.builder(
+              reverse: INSLang.isRTL() ? true : false,
               addAutomaticKeepAlives: false,
               itemCount: contents.length,
               scrollDirection: Axis.horizontal,
@@ -168,17 +155,19 @@ class ItemCard extends StatelessWidget {
                   child: INSNet.getImage(this.product.image,
                       heroTag: this.product.id, padding: 16)),
             ),
-            (this.product.title == null)
-                ? Text("")
-                : Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: kDefultpadding / 2,
-                        horizontal: kDefultpadding / 2),
-                    child: Text(
-                      this.product.title,
-                      style: TextStyle(color: kTextLightColor),
+            INSText(
+              child: (this.product.title == null)
+                  ? Text("")
+                  : Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: kDefultpadding / 2,
+                          horizontal: kDefultpadding / 2),
+                      child: Text(
+                        this.product.title,
+                        style: TextStyle(color: kTextLightColor),
+                      ),
                     ),
-                  ),
+            ),
             (this.product.price == null)
                 ? Text("")
                 : Padding(
@@ -187,10 +176,12 @@ class ItemCard extends StatelessWidget {
                         left: kDefultpadding / 2,
                         right: kDefultpadding / 2,
                         bottom: kDefultpadding),
-                    child: Text(
-                      "\$${this.product.price}",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+                    child: this.product.price > 0
+                        ? Text(
+                            "\$${this.product.price}" "",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        : Container(),
                   ),
           ],
         ),

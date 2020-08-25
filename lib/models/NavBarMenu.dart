@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/ins/data_types.dart';
+import 'package:shop_app/ins/lang.dart';
 
 List<ButtonData> NavMenu = [
-  ButtonData(icon: Icons.home, title: "Home"),
-  ButtonData(icon: Icons.shopping_cart, title: "products"),
   ButtonData(
-    icon: Icons.book,
-    title: "News",
+    icon: Icons.home,
+    title: INSLang.get("home"),
   ),
   ButtonData(
-    icon: Icons.exit_to_app,
-    title: "Contact",
+    icon: Icons.shopping_cart,
+    title: INSLang.get("products"),
+  ),
+  ButtonData(
+    icon: Icons.book,
+    title: INSLang.get("news"),
+  ),
+  ButtonData(
+    icon: Icons.mail,
+    title: INSLang.get("contactus"),
   )
 ];

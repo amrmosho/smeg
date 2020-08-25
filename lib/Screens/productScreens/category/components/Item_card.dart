@@ -35,10 +35,12 @@ class ItemCard extends StatelessWidget {
               style: TextStyle(color: kTextLightColor),
             ),
           ),
-          Text(
-            "\$${this.product.price}",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
+          this.product.price > 0
+              ? Text(
+                  "\$${this.product.price}",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                )
+              : Container(),
         ],
       ),
     );

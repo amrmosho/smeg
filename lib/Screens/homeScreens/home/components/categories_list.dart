@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/Screens/productScreens/category/category.dart';
+import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/ins/net.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/models/products_categories.dart';
@@ -53,6 +53,7 @@ class _CategoriesListState extends State<CategoriesList> {
             padding: EdgeInsets.all(8),
             height: 130,
             child: ListView.builder(
+              reverse: INSLang.isRTL() ? true : false,
               scrollDirection: Axis.horizontal,
               itemCount: _Homecategories.length,
               itemBuilder: (context, index) {

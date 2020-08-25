@@ -5,7 +5,6 @@ import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/net.dart';
 import 'package:shop_app/app_components/main_body.dart';
 import 'package:shop_app/models/cart.dart';
-import 'package:shop_app/models/products.dart';
 
 class CartScreen extends StatefulWidget {
   static String id = "cart";
@@ -59,12 +58,24 @@ class cartBody extends StatelessWidget {
                           text: TextSpan(
                               style: TextStyle(fontSize: 16, height: 1.5),
                               children: [
-                                TextSpan(
-                                  text: "Number : ",
-                                ),
-                                TextSpan(text: Cart.gettotalNumber() + "\n"),
-                                TextSpan(text: "TOTAL :   "),
-                                TextSpan(text: Cart.gettotalPrice() + "\n"),
+                                Cart.gettotalNumber() > 0
+                                    ? TextSpan(
+                                        text: "Number : ",
+                                      )
+                                    : TextSpan(text: ""),
+                                Cart.gettotalNumber() > 0
+                                    ? TextSpan(
+                                        text: Cart.gettotalNumber().toString() +
+                                            "\n")
+                                    : TextSpan(text: ""),
+                                Cart.gettotalPrice() > 0
+                                    ? TextSpan(text: "TOTAL :   ")
+                                    : TextSpan(text: ""),
+                                Cart.gettotalPrice() > 0
+                                    ? TextSpan(
+                                        text: Cart.gettotalPrice().toString() +
+                                            "\n")
+                                    : TextSpan(text: ""),
                               ]),
                         ),
                       ),
@@ -198,7 +209,7 @@ class _CartBodyState extends State<CartBody> {
             icon: Icon(Icons.remove),
             onpress: () {
               if (cart[index].num > 1) {
-                this.parent.setState(() {
+                setState(() {
                   cart[index].num -= 1;
                 });
               }
@@ -214,7 +225,7 @@ class _CartBodyState extends State<CartBody> {
           buildOutlineButton(
             icon: Icon(Icons.add),
             onpress: () {
-              this.parent.setState(() {
+              setState(() {
                 cart[index].num += 1;
               });
             },

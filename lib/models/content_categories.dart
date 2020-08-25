@@ -1,3 +1,4 @@
+import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/net.dart';
 
 //http://smeg.sys4me.com/insapi/sys_content_categories/cat_id/38/
@@ -80,11 +81,20 @@ class ContentCategories {
 
   static void get(Function onDone) {
     INSNet.jsonReadData(type, onDone: (data, file) {
-      List<ContentCategories> cat_data = List<ContentCategories>.from(
-          data.map((data) => ContentCategories.fromJson(data)).toList());
+      List<ContentCategories> cat_data = List<ContentCategories>.from(data
+          .map((data) => updattLang(ContentCategories.fromJson(data)))
+          .toList());
+
       onDone(cat_data);
     }, ISFileOntExist: (path) {
       update(onDone: onDone);
     });
+  }
+
+  static ContentCategories updattLang(ContentCategories data) {
+    ContentCategories r = data;
+    //if (lang == "ar") {}
+
+    return r;
   }
 }

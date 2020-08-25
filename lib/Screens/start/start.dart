@@ -7,6 +7,7 @@ import 'package:shop_app/Screens/homeScreens/products/products.dart';
 import 'package:shop_app/Screens/menu/menu.dart';
 import 'package:shop_app/app_components/screen_title.dart';
 import 'package:shop_app/ins/components/my_bottom_nav_bar.dart';
+import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/ins/net.dart';
 import 'package:shop_app/models/content_categories.dart';
 import 'package:shop_app/models/data.dart';
@@ -66,7 +67,7 @@ class _StratScreenState extends State<StartScreen> {
                             Scale = 1;
                           } else {
                             menu_opend = true;
-                            xoffest = 230;
+                            xoffest = INSLang.isRTL() ? -230 : 230;
                             yoffest = 150;
                             zoffest = 0;
                             Scale = 0.7;

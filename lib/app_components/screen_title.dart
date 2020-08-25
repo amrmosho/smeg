@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:shop_app/constants.dart';
 
 class ScreenTitle extends StatelessWidget {

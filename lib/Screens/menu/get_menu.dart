@@ -62,7 +62,7 @@ class _CartScreenState extends State<AddMenuScreen> {
                           Scale = 1;
                         } else {
                           menu_opend = true;
-                          xoffest = 230;
+                          xoffest = -230;
                           yoffest = 150;
                           zoffest = 0;
                           Scale = 0.7;

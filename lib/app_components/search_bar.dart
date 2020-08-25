@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/ins/lang.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({
@@ -53,7 +54,9 @@ class SearchBar extends StatelessWidget {
                   controller: textSearcController,
                   onChanged: onChanged,
                   decoration: InputDecoration(
-                    hintText: this.hint == null ? "Search..." : this.hint,
+                    hintText: this.hint == null
+                        ? INSLang.get("searchin") + "..."
+                        : this.hint,
                     hintStyle: TextStyle(
                       color: kTextColor.withOpacity(0.5),
                     ),

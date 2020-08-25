@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/ins/ui/ina_inputs.dart';
 import 'package:shop_app/models/NavBarMenu.dart';
 import '../../constants.dart';
@@ -11,7 +12,7 @@ const INSNavUnSelectedIconBackground = Colors.white;
 const double INSNavUnSelectedFontSize = 0.1;
 const double INSNavUnSelectedWidth = 50;
 
-const Duration INSAnimtionSpeed = Duration(milliseconds: 270);
+const Duration INSAnimtionSpeed = Duration(milliseconds: 100);
 
 class INSNavbar extends StatefulWidget {
   final int active_index;
@@ -30,6 +31,25 @@ class _INSNavbarState extends State<INSNavbar> {
 
   @override
   Widget build(BuildContext context) {
+    List<ButtonData> NavMenu = [
+      ButtonData(
+        icon: Icons.home,
+        title: INSLang.get("home"),
+      ),
+      ButtonData(
+        icon: Icons.shopping_cart,
+        title: INSLang.get("products"),
+      ),
+      ButtonData(
+        icon: Icons.book,
+        title: INSLang.get("news"),
+      ),
+      ButtonData(
+        icon: Icons.mail,
+        title: INSLang.get("contactus"),
+      )
+    ];
+
     List<Widget> data = [];
     for (var i = 0; i < NavMenu.length; i++) {
       data.add(NavbarItem(

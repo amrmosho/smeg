@@ -20,7 +20,9 @@ class _NewsScreenState extends State<NewsScreen> {
     super.initState();
 
     Content.get((data) {
-      contents = data;
+      setState(() {
+        contents = data;
+      });
     });
   }
 
@@ -31,6 +33,7 @@ class _NewsScreenState extends State<NewsScreen> {
       body: SafeArea(
         child: AppBody(
           child: Container(
+            padding: EdgeInsets.only(bottom: 34),
             child: ListView.builder(
               itemCount: contents.length,
               itemBuilder: (context, index) {

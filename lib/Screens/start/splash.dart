@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/Screens/start/start.dart';
+import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/ins/net.dart';
 import 'package:shop_app/ins/ui/ina_inputs.dart';
 import 'package:shop_app/models/data.dart';
@@ -16,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    AppData.sheckData(stat: (stat) {
+    AppData.sheckData(context, stat: (stat) {
       setState(() {
         String t = "";
         bool goon = true;
@@ -47,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
-  String _stat = "chack data....";
+  String _stat = "check data....";
 
   @override
   Widget build(BuildContext context) {

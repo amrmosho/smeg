@@ -21,21 +21,6 @@ class _BodyState extends State<Body> {
   void initState() {
     super.initState();
 
-/*
-http://smeg.sys4me.com/insapi/insert/sys_html/title/ffff/
-*/
-/*
-    var resBody = <String, String>{
-      'title': "xxxxxxxxxxxxxxx",
-    };
-
-    INSNet.getJsone(
-        addToUrl: "/insert/sys_html/",
-        data: resBody,
-        onDone: (data) {
-          print(data);
-        });*/
-
     ProductsCategories.get(onDone: (data) {
       setState(() {
         _Homecategories = data;
@@ -114,6 +99,7 @@ http://smeg.sys4me.com/insapi/insert/sys_html/title/ffff/
                 buildInsCardsListData(9, 400, 300),
                 SizedBox(height: 32),
                 buildInsCardsListData(10, 200, 150),
+                SizedBox(height: kDefultpadding),
                 SizedBox(height: kDefultpadding),
               ],
             ),

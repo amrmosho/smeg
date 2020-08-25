@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/ins/lang.dart';
+
+//var lang = "en";
+Language language = Language.en;
 
 const kPrimaryColor = Color(0xFF2c5455);
 const kTextColor = Color(0xFF525353);

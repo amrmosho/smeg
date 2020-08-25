@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:shop_app/constants.dart';
+import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/ins/net.dart';
 
 class ProductsCategories {
@@ -80,8 +84,9 @@ class ProductsCategories {
 
   static void getData(Function onDone) {
     INSNet.jsonReadData(file, onDone: (data, file) {
-      List<ProductsCategories> cat_data = List<ProductsCategories>.from(
-          data.map((data) => ProductsCategories.fromJson(data)).toList());
+      List<ProductsCategories> cat_data = List<ProductsCategories>.from(data
+          .map((data) => updattLang(ProductsCategories.fromJson(data)))
+          .toList());
       onDone(cat_data);
     }, ISFileOntExist: (path) {
       update(onDone: onDone);
@@ -116,5 +121,20 @@ class ProductsCategories {
       });
       onDone(_categories);
     });
+  }
+
+  static ProductsCategories updattLang(ProductsCategories data) {
+    if (language == Language.ar) {
+      if (data.sys_languages != "") {
+        Map l = jsonDecode(data.sys_languages);
+        if (l.containsKey("title")) {
+          Map ltitle = l["title"];
+          if (ltitle.containsKey("ar")) {
+            data.title = ltitle["ar"];
+          }
+        }
+      }
+    }
+    return data;
   }
 }

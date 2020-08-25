@@ -19,14 +19,14 @@ class Cart {
   static remvoe() {}
   static get() {}
 
-  static String gettotalNumber() {
+  static int gettotalNumber() {
     int r = 0;
 
     for (Product pro in cart) {
       if (pro.num != null) r += pro.num;
     }
 
-    return r.toString();
+    return r;
   }
 
   static String getDataJsone() {
@@ -39,12 +39,12 @@ class Cart {
     return jsonEncode(data);
   }
 
-  static String gettotalPrice() {
+  static int gettotalPrice() {
     int r = 0;
     for (Product pro in cart) {
       if (pro.price != null && pro.num != null) r += (pro.price * pro.num);
     }
 
-    return r.toString();
+    return r;
   }
 }

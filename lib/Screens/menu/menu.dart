@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/Screens/productScreens/cart/cart.dart';
+import 'package:shop_app/Screens/settings/setting.dart';
 import 'package:shop_app/Screens/start/start.dart';
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/ins/lang.dart';
 
 class Menu extends StatefulWidget {
   final String act;
@@ -39,7 +41,7 @@ class _StratScreenState extends State<Menu> {
             Column(
               children: [
                 MenuItem(
-                  text: "home",
+                  text: INSLang.get("home"),
                   act: (act == "home"),
                   icon: Icons.home,
                   onpree: () {
@@ -47,12 +49,12 @@ class _StratScreenState extends State<Menu> {
                   },
                 ),
                 MenuItem(
-                  text: "Products",
+                  text: INSLang.get("chekout"),
                   act: (act == "Products"),
-                  icon: Icons.settings_input_composite,
+                  icon: Icons.shopping_basket,
                 ),
                 MenuItem(
-                  text: "Cart",
+                  text: INSLang.get("cart"),
                   act: (act == "Cart"),
                   icon: Icons.add_shopping_cart,
                   onpree: () {
@@ -60,24 +62,23 @@ class _StratScreenState extends State<Menu> {
                   },
                 ),
                 MenuItem(
-                  text: "home",
-                  icon: Icons.home,
-                ),
-                MenuItem(
-                  text: "Contact",
+                  text: INSLang.get("contactus"),
                   act: (act == "Contact"),
                   icon: Icons.contact_mail,
                 ),
                 MenuItem(
-                  text: "about",
+                  text: INSLang.get("aboutus"),
                   act: (act == "about"),
                   icon: Icons.info,
                 ),
               ],
             ),
             MenuItem(
-              text: "Settings / Log out",
+              text: INSLang.get("settings"),
               icon: Icons.settings,
+              onpree: () {
+                Navigator.pushNamed(context, SettingsScreen.id);
+              },
             ),
           ],
         ),

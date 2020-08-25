@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shop_app/Screens/productScreens/cart/cart.dart';
+import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/models/cart.dart';
 import 'package:shop_app/models/products.dart';
 import 'package:shop_app/models/session.dart';
@@ -83,7 +84,7 @@ class _AddToCartState extends State<AddToCart> with TickerProviderStateMixin {
                     _controller.reverse();
                   },
                   child: Text(
-                    " Add To Cart ".toUpperCase(),
+                    INSLang.get("addtocart").toUpperCase(),
                     style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                   ),
                 )),

@@ -4,6 +4,7 @@ import 'package:shop_app/app_components/main_body.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/net.dart';
 import 'package:shop_app/ins/ui/ins_ui.dart';
+import 'package:shop_app/ins/utils.dart';
 import 'package:shop_app/models/cart.dart';
 
 class CheckoutScreen extends StatefulWidget {
@@ -39,8 +40,7 @@ class _CheckOutBodyState extends State<CheckOutBody> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: double.infinity,
+    return Expanded(
       child: ListView(
         scrollDirection: Axis.vertical,
         children: [
@@ -53,12 +53,22 @@ class _CheckOutBodyState extends State<CheckOutBody> {
                     style: TextStyle(
                         fontSize: 16, height: 1.5, color: Colors.grey),
                     children: [
-                      TextSpan(
-                        text: "Number : ",
-                      ),
-                      TextSpan(text: Cart.gettotalNumber() + "\n"),
-                      TextSpan(text: "TOTAL :   "),
-                      TextSpan(text: Cart.gettotalPrice() + "\n"),
+                      Cart.gettotalNumber() > 0
+                          ? TextSpan(
+                              text: "Number : ",
+                            )
+                          : TextSpan(text: ""),
+                      Cart.gettotalNumber() > 0
+                          ? TextSpan(
+                              text: Cart.gettotalNumber().toString() + "\n")
+                          : TextSpan(text: ""),
+                      Cart.gettotalPrice() > 0
+                          ? TextSpan(text: "TOTAL :   ")
+                          : TextSpan(text: ""),
+                      Cart.gettotalPrice() > 0
+                          ? TextSpan(
+                              text: Cart.gettotalPrice().toString() + "\n")
+                          : TextSpan(text: ""),
                     ]),
               ),
             ),
@@ -170,22 +180,26 @@ class _CheckOutBodyState extends State<CheckOutBody> {
     var k = _fromKey.currentState.validate();
     if (_fromKey.currentState.validate()) {
       _fromKey.currentState.save();
-      obj["email"] = _email;
-      obj["name"] = _name;
-      obj["items"] = Cart.getDataJsone();
+      INSUtils.getDeviceId(context, onDone: (id) {
+        obj["email"] = _email;
+        obj["name"] = _name;
+        obj["items"] = Cart.getDataJsone();
+        obj["device_id"] = id;
+        obj["address"] = _address;
 
-      INSNet.getJsone(
-          addToUrl: "insert/com_orders/",
-          data: obj,
-          onDone: (data) {
-            if (data != false) {
-              INSUI.successSnack(
-                  context, "Your order has been sent successfly");
-            } else {
-              INSUI.errorSnack(
-                  context, "Your order sent faild,Something want wrong!");
-            }
-          });
+        INSNet.getJsone(
+            addToUrl: "insert/com_orders/",
+            data: obj,
+            onDone: (data) {
+              if (data != false) {
+                INSUI.successSnack(
+                    context, "Your order has been sent successfly");
+              } else {
+                INSUI.errorSnack(
+                    context, "Your order sent faild,Something want wrong!");
+              }
+            });
+      });
     }
   }
 }
