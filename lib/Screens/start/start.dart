@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:shop_app/Screens/contact/contact.dart';
 import 'package:shop_app/Screens/homeScreens/home/home.dart';
 import 'package:shop_app/Screens/homeScreens/news/news.dart';
@@ -8,9 +7,6 @@ import 'package:shop_app/Screens/menu/menu.dart';
 import 'package:shop_app/app_components/screen_title.dart';
 import 'package:shop_app/ins/components/my_bottom_nav_bar.dart';
 import 'package:shop_app/ins/lang.dart';
-import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/models/content_categories.dart';
-import 'package:shop_app/models/data.dart';
 
 class StartScreen extends StatefulWidget {
   static String id = "start";
