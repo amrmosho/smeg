@@ -31,10 +31,10 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    ddd();
+    updateLang();
   }
 
-  Future<SharedPreferences> ddd() async {
+  Future<SharedPreferences> updateLang() async {
     final prefs = await SharedPreferences.getInstance();
     int lang = prefs.getInt('lang') ?? 0;
 
