@@ -49,7 +49,7 @@ class _StratScreenState extends State<Menu> {
                   },
                 ),
                 MenuItem(
-                  text: INSLang.get("chekout"),
+                  text: INSLang.get("inquiry"),
                   act: (act == "Products"),
                   icon: Icons.shopping_basket,
                 ),

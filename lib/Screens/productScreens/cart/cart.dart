@@ -89,7 +89,7 @@ class cartBody extends StatelessWidget {
                         onPressed: () {
                           Navigator.pushNamed(context, CheckoutScreen.id);
                         },
-                        child: Text(INSLang.get("checkout"),
+                        child: Text(INSLang.get("inquiry"),
                           style: TextStyle(color: Colors.white),
                         ),
                       ),

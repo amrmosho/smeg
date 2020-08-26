@@ -23,7 +23,7 @@ class CategoryScreen extends StatelessWidget {
         children: [
           SizedBox(height: 30),
           Container(
-            height: 105,
+            height: 100,
             child: ScreenTitle(
               title: INSLang.get("category"),
               subtitle: category.title,
