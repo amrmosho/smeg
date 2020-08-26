@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/Screens/menu/menu.dart';
 import 'package:shop_app/app_components/screen_title.dart';
+import 'package:shop_app/ins/lang.dart';
 import '../../constants.dart';
 
 class AddMenuScreen extends StatefulWidget {
@@ -62,7 +63,7 @@ class _CartScreenState extends State<AddMenuScreen> {
                           Scale = 1;
                         } else {
                           menu_opend = true;
-                          xoffest = -230;
+                          xoffest = INSLang.isRTL() ? -150 : 230;
                           yoffest = 150;
                           zoffest = 0;
                           Scale = 0.7;

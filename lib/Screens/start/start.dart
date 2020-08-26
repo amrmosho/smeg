@@ -63,7 +63,7 @@ class _StratScreenState extends State<StartScreen> {
                             Scale = 1;
                           } else {
                             menu_opend = true;
-                            xoffest = INSLang.isRTL() ? -230 : 230;
+                            xoffest = INSLang.isRTL() ? -150 : 230;
                             yoffest = 150;
                             zoffest = 0;
                             Scale = 0.7;

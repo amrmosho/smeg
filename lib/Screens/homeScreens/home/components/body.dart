@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/Screens/articales/category/category.dart';
 import 'package:shop_app/Screens/homeScreens/home/components/categories_list.dart';
+import 'package:shop_app/Screens/productScreens/category/category.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/components/ins_cards_list.dart';
 import 'package:shop_app/ins/net.dart';

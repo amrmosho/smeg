@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shop_app/Screens/menu/get_menu.dart';
 import 'package:shop_app/Screens/productScreens/category/components/body.dart';
 import 'package:shop_app/app_components/screen_title.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/ins/lang.dart';
 import 'package:shop_app/models/products_categories.dart';
 
-class CategoryScreen extends StatelessWidget {
+class ConetnCategoryScreen extends StatelessWidget {
   static String id = "productes";
   final ProductsCategories category;
 
-  const CategoryScreen(
+  const ConetnCategoryScreen(
     this.category, {
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AddMenuScreen(
+      title: INSLang.get("category"),
+      Screen: Expanded(child: Body(this.category)),
+    );
+
+    /*
+    
+     Scaffold(
       backgroundColor: INSDefultScreenBackground,
       body: Column(
         children: [
@@ -32,9 +40,24 @@ class CategoryScreen extends StatelessWidget {
           Expanded(child: Body(this.category)),
         ],
       ),
-    );
+    );*/
   }
 
+/*
+
+  body: Column(
+        children: [
+          SizedBox(height: 30),
+          Container(
+            height: 100,
+            child: ScreenTitle(
+              title: INSLang.get("category"),
+              subtitle: category.title,
+            ),
+          ),
+          Expanded(child: Body(this.category)),
+        ],
+      ),
   Widget buildAppBar(BuildContext context) {
     return Container(
       height: 90,
@@ -74,5 +97,5 @@ class CategoryScreen extends StatelessWidget {
         ],
       ),
     );
-  }
+  }*/
 }

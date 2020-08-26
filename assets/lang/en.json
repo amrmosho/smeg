@@ -1,7 +1,7 @@
 {
     "check_out": "check out",
     "home": "Home",
-    "cart": "cart",
+    "cart": "Cart",
     "contactus": "contact us",
     "aboutus": "about us",
     "language": "Language",
@@ -14,7 +14,6 @@
     "welcomeback": "Welcome Back",
     "favorites": "Favorites",
     "myorders": "My Orders",
-    "cart": "Cart",
     "number": "Number : ",
     "total": "Total : ",
     "name": "Name *",

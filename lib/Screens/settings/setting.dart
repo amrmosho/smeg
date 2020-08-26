@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/Screens/menu/get_menu.dart';
 import 'package:shop_app/Screens/start/splash.dart';
 import 'package:shop_app/app_components/main_body.dart';
 import 'package:shop_app/app_components/screen_title.dart';
@@ -19,26 +20,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: INSDefultScreenBackground,
-      body: Column(
-        children: [
-          SizedBox(height: 30),
-          Container(
-            height: 100,
-            child: ScreenTitle(
-              title: INSLang.get("settings"),
-              subtitle: "",
+    return AddMenuScreen(
+        title: INSLang.get("settings"),
+        subtitle: "",
+        act: "",
+        Screen: Container(
+          child: AppBody(
+            child: Expanded(
+              child: AppBody(
+                child: settingBody(),
+              ),
             ),
           ),
-          Expanded(
-            child: AppBody(
-              child: settingBody(),
-            ),
-          ),
-        ],
-      ),
-    );
+        ));
   }
 
   Container settingBody() {

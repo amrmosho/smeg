@@ -3,6 +3,7 @@ import 'package:shop_app/Screens/homeScreens/home/components/categories_list.dar
 import 'package:shop_app/Screens/productScreens/details/details_screen.dart';
 import 'package:shop_app/app_components/search_bar.dart';
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/ins/lang.dart';
 
 import 'package:shop_app/models/products.dart';
 import 'package:shop_app/models/products_categories.dart';
@@ -65,7 +66,10 @@ class _BodyState extends State<Body> {
                 });
               }, cat_id: widget.category.id, title: value);
             },
-            hint: " Search in " + this.widget.category.title + " ....",
+            hint: INSLang.get("searchin") +
+                " " +
+                this.widget.category.title +
+                " ....",
           ),
           CategoriesList(
               Homecategories: _Homecategories,
