@@ -46,26 +46,26 @@ class ScreenTitle extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(top: 20),
-                  child: RichText(
-                    text: TextSpan(children: [
-                      TextSpan(
-                        text: this.title + '\n',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline5
-                            .copyWith(color: INSDefultScreenTitleColor),
-                      ),
-                      (this.subtitle != null)
-                          ? TextSpan(
-                              text: this.subtitle,
-                              style: TextStyle(
-                                  color: INSDefultTextColor, fontSize: 12),
-                            )
-                          : TextSpan(),
-                    ]),
-                  ),
-                ),
+                    padding: EdgeInsets.only(top: 5),
+                    child: Column(
+                      children: [
+                        Text(
+                          this.title,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6
+                              .copyWith(color: INSDefultScreenTitleColor),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 16),
+                          child: Text(
+                            this.subtitle,
+                            style: TextStyle(
+                                color: INSDefultTextColor, fontSize: 12),
+                          ),
+                        ),
+                      ],
+                    )),
                 Image.asset(
                   "assets/images/smeg_logo.png",
                   width: 180,

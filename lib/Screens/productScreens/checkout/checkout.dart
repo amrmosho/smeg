@@ -18,7 +18,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   Widget build(BuildContext context) {
     return AddMenuScreen(
-      title: INSLang.get("inquiry"),
+      title: INSLang.get("inquries"),
       Screen: AppBody(
         child: CheckOutBody(),
       ),
@@ -91,7 +91,7 @@ class _CheckOutBodyState extends State<CheckOutBody> {
                 InputCont(
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText:INSLang.get("email"),
+                      labelText: INSLang.get("email"),
                       border: OutlineInputBorder(),
                     ),
                     validator: _validate,
@@ -193,11 +193,9 @@ class _CheckOutBodyState extends State<CheckOutBody> {
             data: obj,
             onDone: (data) {
               if (data != false) {
-                INSUI.successSnack(
-                    context, INSLang.get("successfullymsg"));
+                INSUI.successSnack(context, INSLang.get("successfullymsg"));
               } else {
-                INSUI.errorSnack(
-                    context, INSLang.get("faildmsg"));
+                INSUI.errorSnack(context, INSLang.get("faildmsg"));
               }
             });
       });

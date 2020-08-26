@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop_app/Screens/homeScreens/products/products.dart';
 import 'package:shop_app/Screens/productScreens/cart/cart.dart';
 import 'package:shop_app/Screens/productScreens/checkout/checkout.dart';
@@ -16,12 +17,39 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    INSLang.update();
+  _MyAppState createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
+  //
+
+  var _myLocal = Locale('en');
+
+  @override
+  void initState() {
+    super.initState();
+    ddd();
+  }
+
+  Future<SharedPreferences> ddd() async {
+    final prefs = await SharedPreferences.getInstance();
+    int lang = prefs.getInt('lang') ?? 0;
+
+    if (lang == 0) {
+      language = Language.en;
+    } else {
+      language = Language.ar;
+    }
+    setState(() {
+      _myLocal = INSLang.isRTL() ? Locale('ar') : Locale('en');
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return RestartWidget(
         child: MaterialApp(
       localizationsDelegates: [
@@ -33,7 +61,7 @@ class MyApp extends StatelessWidget {
         const Locale('en', ''),
         const Locale('ar', ''),
       ],
-      locale: INSLang.isRTL() ? Locale('ar') : Locale('en'),
+      locale: _myLocal,
       debugShowCheckedModeBanner: false,
       title: 'Smeg',
       routes: {
