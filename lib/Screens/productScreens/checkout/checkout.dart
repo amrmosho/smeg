@@ -18,7 +18,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   Widget build(BuildContext context) {
     return AddMenuScreen(
-      title: INSLang.get("inquiry"),
+      title: INSLang.get("inquiries"),
       Screen: AppBody(
         child: CheckOutBody(),
       ),
