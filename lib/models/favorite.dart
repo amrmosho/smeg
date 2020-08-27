@@ -18,6 +18,24 @@ class Favorite {
     });
   }
 
+  static bool isExist(String id, {Function onDone}) {
+    Favorite.get(onDone: (data) {
+      List<Favorite> d = data;
+
+      for (Favorite f in d) {
+        if (f.id == id) {
+          onDone(true);
+          return true;
+        }
+      }
+      onDone(false);
+      return false;
+    }, ISFileOntExist: (path) {
+      onDone(false);
+      return false;
+    });
+  }
+
   static void add(String id) {
     Favorite.get(onDone: (data) {
       List<Favorite> d = data;

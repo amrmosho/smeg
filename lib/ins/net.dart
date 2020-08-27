@@ -38,7 +38,12 @@ class INSNet {
         if (onDone != null) {
           onDone(jsonDecode(response.body));
         }
-        return jsonDecode(response.body);
+        try {
+          return jsonDecode(response.body);
+        } on Exception catch (e) {
+          print(e);
+          return null;
+        }
       } else {
         // If the server did not return a 201 CREATED response,
         // then throw an exception.

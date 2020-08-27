@@ -19,6 +19,33 @@ class INSText extends StatelessWidget {
   }
 }
 
+class INSTText extends StatelessWidget {
+  final String text;
+  final double fontsize;
+  final Color color;
+
+  const INSTText({@required this.text, this.fontsize, this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Directionality(
+        textDirection: INSLang.isRTL() ? TextDirection.rtl : TextDirection.ltr,
+        child: Container(
+          padding: const EdgeInsets.only(
+              left: kDefaultPadding, right: kDefaultPadding),
+          width: double.infinity,
+          child: Text(
+            this.text,
+            style: TextStyle(
+              color: color == null ? INSDefultTextColor : color,
+              fontSize: this.fontsize == null ? 12 : this.fontsize,
+              fontFamily: INSLang.isRTL() ? "Cairo" : "OpenSans",
+            ),
+          ),
+        ));
+  }
+}
+
 class INSTitle extends StatelessWidget {
   final String text;
   const INSTitle({@required this.text});

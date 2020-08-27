@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Smeg/Screens/homeScreens/products/products.dart';
@@ -9,6 +10,7 @@ import 'package:Smeg/Screens/start/splash.dart';
 
 import 'package:Smeg/Screens/start/start.dart';
 import 'package:Smeg/ins/lang.dart';
+import 'AppLocalizations.dart';
 import 'Screens/homeScreens/home/home.dart';
 import 'constants.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -18,34 +20,25 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-  // This widget is the root of your application.
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  //
-
-  var _myLocal = Locale('en');
-
   @override
   void initState() {
     super.initState();
-    updateLang();
+    INSLang.get_lang(onDone: () {
+      setState(() {
+        GlobalMaterialLocalizations.delegate.load(Locale('ar', ''));
+        GlobalWidgetsLocalizations.delegate.load(Locale('ar', ''));
+        GlobalCupertinoLocalizations.delegate.load(Locale('ar', ''));
+      });
+    });
   }
 
-  Future<SharedPreferences> updateLang() async {
-    final prefs = await SharedPreferences.getInstance();
-    int lang = prefs.getInt('lang') ?? 0;
-
-    if (lang == 0) {
-      language = Language.en;
-    } else {
-      language = Language.ar;
-    }
-    setState(() {
-      _myLocal = INSLang.isRTL() ? Locale('ar') : Locale('en');
-    });
+  onLocaleChange(Locale l) {
+    setState(() {});
   }
 
   @override
@@ -61,7 +54,7 @@ class _MyAppState extends State<MyApp> {
         const Locale('en', ''),
         const Locale('ar', ''),
       ],
-      locale: _myLocal,
+      // locale: INSLang.isRTL() ? Locale('ar') : Locale('en'),
       debugShowCheckedModeBanner: false,
       title: 'Smeg',
       routes: {
@@ -102,15 +95,14 @@ class _RestartWidgetState extends State<RestartWidget> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    /* INSLang.update();*/
   }
 
   void restartApp() {
-    /*INSLang.update();*/
-    setState(() {
-      key = UniqueKey();
+    INSLang.get_lang(onDone: () {
+      setState(() {
+        key = UniqueKey();
+      });
     });
   }
 

@@ -54,7 +54,7 @@ class _CategoriesListState extends State<CategoriesList> {
             padding: EdgeInsets.all(8),
             height: 150,
             child: ListView.builder(
-              reverse: INSLang.isRTL() ? true : false,
+              //  reverse: INSLang.isRTL() ? true : false,
               scrollDirection: Axis.horizontal,
               itemCount: _Homecategories.length,
               itemBuilder: (context, index) {

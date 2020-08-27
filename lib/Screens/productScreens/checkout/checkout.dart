@@ -1,3 +1,4 @@
+import 'package:Smeg/Screens/homeScreens/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:Smeg/Screens/menu/get_menu.dart';
 import 'package:Smeg/app_components/main_body.dart';
@@ -196,6 +197,11 @@ class _CheckOutBodyState extends State<CheckOutBody> {
             onDone: (data) {
               if (data != false) {
                 INSUI.successSnack(context, INSLang.get("successfullymsg"));
+
+                Future.delayed(const Duration(seconds: 2), () {
+                  Cart.clear();
+                  Navigator.pushNamed(context, HomeScreen.id);
+                });
               } else {
                 INSUI.errorSnack(context, INSLang.get("faildmsg"));
               }

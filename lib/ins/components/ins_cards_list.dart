@@ -85,7 +85,7 @@ class ListBody extends StatelessWidget {
       child: (contents.length < 2)
           ? Container()
           : ListView.builder(
-              reverse: INSLang.isRTL() ? true : false,
+              //  reverse: INSLang.isRTL() ? true : false,
               addAutomaticKeepAlives: false,
               itemCount: contents.length,
               scrollDirection: Axis.horizontal,

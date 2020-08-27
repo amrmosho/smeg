@@ -19,6 +19,10 @@ class Cart {
   static remvoe() {}
   static get() {}
 
+  static void clear() {
+    cart.clear();
+  }
+
   static int gettotalNumber() {
     int r = 0;
 
