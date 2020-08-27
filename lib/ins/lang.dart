@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shop_app/constants.dart';
+import 'package:Smeg/constants.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 enum Language { en, ar }

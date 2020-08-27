@@ -1,8 +1,9 @@
+import 'package:Smeg/app_components/text.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/ins/lang.dart';
-import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/models/products_categories.dart';
+import 'package:Smeg/ins/lang.dart';
+import 'package:Smeg/ins/net.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/models/products_categories.dart';
 
 class CategoriesList extends StatefulWidget {
   final String cat_id;
@@ -51,7 +52,7 @@ class _CategoriesListState extends State<CategoriesList> {
         ? Container(height: 0)
         : Container(
             padding: EdgeInsets.all(8),
-            height: 130,
+            height: 150,
             child: ListView.builder(
               reverse: INSLang.isRTL() ? true : false,
               scrollDirection: Axis.horizontal,
@@ -93,12 +94,11 @@ class _CategoriesListState extends State<CategoriesList> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: Text(
-                        _Homecategories[index].title,
-                        style: TextStyle(fontSize: 10),
-                      ),
-                    )
+                        padding: const EdgeInsets.only(top: 4.0),
+                        child: INSSubTitle(
+                          text: _Homecategories[index].title,
+                          // fontsize: 10,
+                        ))
                   ]),
                 );
               },

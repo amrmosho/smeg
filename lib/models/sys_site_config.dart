@@ -1,4 +1,4 @@
-import 'package:shop_app/ins/net.dart';
+import 'package:Smeg/ins/net.dart';
 
 class SiteConfig {
   static String type = "sys_site_config";

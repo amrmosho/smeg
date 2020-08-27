@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/lang.dart';
-import 'package:shop_app/ins/net.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/lang.dart';
+import 'package:Smeg/ins/net.dart';
 
 class ProductsCategories {
   static String type = "com_icac_products_categories";

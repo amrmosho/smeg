@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shop_app/Screens/productScreens/details/components/cat_conter.dart';
-import 'package:shop_app/models/favorite.dart';
-import 'package:shop_app/models/products.dart';
+import 'package:Smeg/Screens/productScreens/details/components/cat_conter.dart';
+import 'package:Smeg/models/favorite.dart';
+import 'package:Smeg/models/products.dart';
 
 class CounterAndFavBtn extends StatelessWidget {
   const CounterAndFavBtn({

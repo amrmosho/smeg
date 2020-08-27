@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/Screens/menu/get_menu.dart';
-import 'package:shop_app/Screens/productScreens/checkout/checkout.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/lang.dart';
-import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/app_components/main_body.dart';
-import 'package:shop_app/models/cart.dart';
+import 'package:Smeg/Screens/menu/get_menu.dart';
+import 'package:Smeg/Screens/productScreens/checkout/checkout.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/lang.dart';
+import 'package:Smeg/ins/net.dart';
+import 'package:Smeg/app_components/main_body.dart';
+import 'package:Smeg/models/cart.dart';
 
 class CartScreen extends StatefulWidget {
   static String id = "cart";
@@ -89,7 +89,8 @@ class cartBody extends StatelessWidget {
                         onPressed: () {
                           Navigator.pushNamed(context, CheckoutScreen.id);
                         },
-                        child: Text(INSLang.get("sendinquiry"),
+                        child: Text(
+                          INSLang.get("sendinquiry"),
                           style: TextStyle(color: Colors.white),
                         ),
                       ),

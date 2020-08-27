@@ -1,5 +1,5 @@
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/net.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/net.dart';
 
 //http://smeg.sys4me.com/insapi/sys_content_categories/cat_id/38/
 class ContentCategories {

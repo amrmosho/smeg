@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:shop_app/Screens/start/start.dart';
-import 'package:shop_app/ins/lang.dart';
-import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/ins/ui/ina_inputs.dart';
-import 'package:shop_app/models/data.dart';
+import 'package:Smeg/Screens/start/start.dart';
+import 'package:Smeg/ins/lang.dart';
+import 'package:Smeg/ins/ui/ina_inputs.dart';
+import 'package:Smeg/models/data.dart';
 
 class SplashScreen extends StatefulWidget {
   static String id = "splash";

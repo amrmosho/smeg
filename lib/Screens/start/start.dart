@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/Screens/contact/contact.dart';
-import 'package:shop_app/Screens/homeScreens/home/home.dart';
-import 'package:shop_app/Screens/homeScreens/news/news.dart';
-import 'package:shop_app/Screens/homeScreens/products/products.dart';
-import 'package:shop_app/Screens/menu/menu.dart';
-import 'package:shop_app/app_components/screen_title.dart';
-import 'package:shop_app/ins/components/my_bottom_nav_bar.dart';
-import 'package:shop_app/ins/lang.dart';
+import 'package:Smeg/Screens/contact/contact.dart';
+import 'package:Smeg/Screens/homeScreens/home/home.dart';
+import 'package:Smeg/Screens/homeScreens/news/news.dart';
+import 'package:Smeg/Screens/homeScreens/products/products.dart';
+import 'package:Smeg/Screens/menu/menu.dart';
+import 'package:Smeg/app_components/screen_title.dart';
+import 'package:Smeg/ins/components/my_bottom_nav_bar.dart';
+import 'package:Smeg/ins/lang.dart';
 
 class StartScreen extends StatefulWidget {
   static String id = "start";

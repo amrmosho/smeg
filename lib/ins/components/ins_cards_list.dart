@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/Screens/productScreens/details/details_screen.dart';
-import 'package:shop_app/app_components/text.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/lang.dart';
-import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/models/products.dart';
+import 'package:Smeg/Screens/productScreens/details/details_screen.dart';
+import 'package:Smeg/app_components/text.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/lang.dart';
+import 'package:Smeg/ins/net.dart';
+import 'package:Smeg/models/products.dart';
 
 class INSCardsList extends StatefulWidget {
   const INSCardsList({
@@ -47,17 +47,12 @@ class _INSCardsListState extends State<INSCardsList> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(
-              left: kDefaultPadding, bottom: kDefaultPadding),
+          padding: const EdgeInsets.only(bottom: kDefaultPadding),
           child: INSText(
             child: (widget.title == null)
                 ? Text("")
-                : Text(
-                    widget.title,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline6
-                        .copyWith(color: INSDefultLebalColor),
+                : INSHeadLine(
+                    text: widget.title,
                   ),
           ),
         ),

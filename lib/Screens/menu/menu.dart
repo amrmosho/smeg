@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/Screens/productScreens/cart/cart.dart';
-import 'package:shop_app/Screens/settings/setting.dart';
-import 'package:shop_app/Screens/start/start.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/lang.dart';
+import 'package:Smeg/Screens/productScreens/cart/cart.dart';
+import 'package:Smeg/Screens/settings/setting.dart';
+import 'package:Smeg/Screens/start/start.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/lang.dart';
 
 class Menu extends StatefulWidget {
   final String act;

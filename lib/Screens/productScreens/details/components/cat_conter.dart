@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/models/products.dart';
-import 'package:shop_app/models/session.dart';
+import 'package:Smeg/models/products.dart';
+import 'package:Smeg/models/session.dart';
 
-import 'package:shop_app/constants.dart';
+import 'package:Smeg/constants.dart';
 
 class CartCounter extends StatefulWidget {
   final Product product;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/ins/data_types.dart';
-import 'package:shop_app/ins/lang.dart';
+import 'package:Smeg/ins/data_types.dart';
+import 'package:Smeg/ins/lang.dart';
 
 List<ButtonData> NavMenu = [
   ButtonData(

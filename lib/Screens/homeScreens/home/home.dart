@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/Screens/homeScreens/home/components/body.dart';
+import 'package:Smeg/Screens/homeScreens/home/components/body.dart';
 
 class HomeScreen extends StatelessWidget {
   static String id = "home";

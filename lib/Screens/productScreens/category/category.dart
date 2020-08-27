@@ -1,9 +1,10 @@
+import 'package:Smeg/Screens/menu/get_menu.dart';
+import 'package:Smeg/app_components/main_body.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/Screens/menu/get_menu.dart';
-import 'package:shop_app/Screens/productScreens/category/components/body.dart';
-import 'package:shop_app/app_components/main_body.dart';
-import 'package:shop_app/ins/lang.dart';
-import 'package:shop_app/models/products_categories.dart';
+import 'package:Smeg/Screens/productScreens/category/components/body.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/lang.dart';
+import 'package:Smeg/models/products_categories.dart';
 
 class CategoryScreen extends StatelessWidget {
   static String id = "productes";
@@ -16,14 +17,24 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AddMenuScreen(
-        title: INSLang.get("category"),
-        subtitle: this.category.title,
+    return Scaffold(
+      backgroundColor: INSDefultScreenBackground,
+      body: AddMenuScreen(
         act: "",
-        Screen: Container(
-          child: AppBody(
-            child: Expanded(child: Body(this.category)),
-          ),
-        ));
+        title: INSLang.get('category'),
+        subtitle: category.title,
+        Screen: AppBody(
+          child: categoryBody(),
+        ),
+      ),
+    );
+  }
+
+  Column categoryBody() {
+    return Column(
+      children: [
+        Expanded(child: Body(this.category)),
+      ],
+    );
   }
 }

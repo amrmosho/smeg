@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/Screens/articales/category/category.dart';
-import 'package:shop_app/Screens/homeScreens/home/components/categories_list.dart';
-import 'package:shop_app/Screens/productScreens/category/category.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/components/ins_cards_list.dart';
-import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/ins/ui/ina_inputs.dart';
-import 'package:shop_app/models/content.dart';
-import 'package:shop_app/models/products_categories.dart';
+import 'package:Smeg/Screens/articales/category/category.dart';
+import 'package:Smeg/Screens/homeScreens/home/components/categories_list.dart';
+import 'package:Smeg/Screens/productScreens/category/category.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/components/ins_cards_list.dart';
+import 'package:Smeg/ins/net.dart';
+import 'package:Smeg/ins/ui/ina_inputs.dart';
+import 'package:Smeg/models/content.dart';
+import 'package:Smeg/models/products_categories.dart';
 
 class Body extends StatefulWidget {
   @override

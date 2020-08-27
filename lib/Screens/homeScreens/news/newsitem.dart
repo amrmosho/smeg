@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shop_app/app_components/main_body.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/models/content.dart';
+import 'package:Smeg/app_components/main_body.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/net.dart';
+import 'package:Smeg/models/content.dart';
 
 class NewsItemSreen extends StatelessWidget {
   final Content content;

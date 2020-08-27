@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/ins/lang.dart';
+import 'package:Smeg/ins/lang.dart';
 
 // var lang = "en";
 Language language = Language.en;
@@ -19,7 +19,7 @@ const INSDefultRadius = 24.0;
 const Color INSDefultScreenTitleColor = INSPrimaryColor;
 const Color INSDefultLebalColor = INSPrimaryColor;
 
-const Color INSDefultTextColor = Color(0xFFBDBDBD);
+const Color INSDefultTextColor = Color(0xFF8a8a8a);
 
 const Color INSDefultScreenBackground = Colors.black;
 

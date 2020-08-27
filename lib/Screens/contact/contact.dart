@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/app_components/main_body.dart';
-import 'package:shop_app/ins/lang.dart';
-import 'package:shop_app/ins/net.dart';
+import 'package:Smeg/app_components/main_body.dart';
+import 'package:Smeg/ins/lang.dart';
+import 'package:Smeg/ins/net.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
 class ConactScreen extends StatefulWidget {
@@ -34,9 +34,7 @@ class _ConactScreenState extends State<ConactScreen> {
       backgroundColor: Colors.black,
       body: SafeArea(
         child: AppBody(
-          child: Container(
-              width: double.infinity,
-              child: Expanded(child: HtmlWidget(_string))),
+          child: Container(width: double.infinity, child: HtmlWidget(_string)),
         ),
       ),
     );

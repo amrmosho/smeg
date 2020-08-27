@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop_app/Screens/menu/get_menu.dart';
-import 'package:shop_app/Screens/productScreens/category/components/body.dart';
-import 'package:shop_app/app_components/screen_title.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/lang.dart';
-import 'package:shop_app/models/products_categories.dart';
+import 'package:Smeg/Screens/menu/get_menu.dart';
+import 'package:Smeg/Screens/menu/get_menu.dart';
+import 'package:Smeg/Screens/productScreens/category/components/body.dart';
+import 'package:Smeg/app_components/screen_title.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/lang.dart';
+import 'package:Smeg/models/products_categories.dart';
 
 class ConetnCategoryScreen extends StatelessWidget {
   static String id = "productes";

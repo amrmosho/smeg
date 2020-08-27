@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shop_app/Screens/homeScreens/home/home.dart';
-import 'package:shop_app/Screens/productScreens/cart/cart.dart';
-import 'package:shop_app/Screens/productScreens/details/components/body.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/models/products.dart';
+import 'package:Smeg/Screens/homeScreens/home/home.dart';
+import 'package:Smeg/Screens/productScreens/cart/cart.dart';
+import 'package:Smeg/Screens/productScreens/details/components/body.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/models/products.dart';
 
 class DetaillsScreen extends StatelessWidget {
   final Product product;

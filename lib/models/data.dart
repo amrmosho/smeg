@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/models/orders.dart';
-import 'package:shop_app/models/products.dart';
-import 'package:shop_app/models/products_categories.dart';
-import 'package:shop_app/models/sys_site_config.dart';
+import 'package:Smeg/ins/net.dart';
+import 'package:Smeg/models/orders.dart';
+import 'package:Smeg/models/products.dart';
+import 'package:Smeg/models/products_categories.dart';
+import 'package:Smeg/models/sys_site_config.dart';
 import 'content.dart';
 import 'content_categories.dart';
 import 'dart:io';

@@ -1,6 +1,7 @@
+import 'package:Smeg/app_components/text.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/data_types.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/data_types.dart';
 
 const double INSBTNDefaultTextSize = 15;
 const double INSBTNDefaultIconSize = 15;
@@ -53,15 +54,12 @@ class INSButton extends StatelessWidget {
                   ),
                   onPressed: onclick,
                 ),
-                Text(
-                  this.button.title,
-                  style: TextStyle(
-                    fontSize:
-                        text_size == null ? INSBTNDefaultTextSize : text_size,
-                    color: text_color == null
-                        ? INSBTNDefaultTextColor
-                        : text_color,
-                  ),
+                INSSubTitle(
+                  text: this.button.title,
+                  color:
+                      text_color == null ? INSBTNDefaultTextColor : text_color,
+                  fontsize:
+                      text_size == null ? INSBTNDefaultTextSize : text_size,
                 ),
               ],
             )

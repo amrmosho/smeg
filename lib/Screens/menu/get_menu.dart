@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/Screens/menu/menu.dart';
-import 'package:shop_app/app_components/screen_title.dart';
-import 'package:shop_app/ins/lang.dart';
+import 'package:Smeg/Screens/menu/menu.dart';
+import 'package:Smeg/app_components/screen_title.dart';
+import 'package:Smeg/ins/lang.dart';
 import '../../constants.dart';
 
 class AddMenuScreen extends StatefulWidget {

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/Screens/productScreens/details/details_screen.dart';
-import 'package:shop_app/app_components/app_cart.dart';
-import 'package:shop_app/app_components/main_body.dart';
-import 'package:shop_app/app_components/search_bar.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/lang.dart';
-import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/models/favorite.dart';
-import 'package:shop_app/models/orders.dart';
-import 'package:shop_app/models/products.dart';
+import 'package:Smeg/Screens/productScreens/details/details_screen.dart';
+import 'package:Smeg/app_components/app_cart.dart';
+import 'package:Smeg/app_components/main_body.dart';
+import 'package:Smeg/app_components/search_bar.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/lang.dart';
+import 'package:Smeg/ins/net.dart';
+import 'package:Smeg/models/favorite.dart';
+import 'package:Smeg/models/orders.dart';
+import 'package:Smeg/models/products.dart';
 
 class ProductesScreen extends StatefulWidget {
   static String id = "productes";

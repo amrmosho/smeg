@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/ins/lang.dart';
-import 'package:shop_app/ins/ui/ina_inputs.dart';
-import 'package:shop_app/models/NavBarMenu.dart';
+import 'package:Smeg/ins/lang.dart';
+import 'package:Smeg/ins/ui/ina_inputs.dart';
+import 'package:Smeg/models/NavBarMenu.dart';
 import '../../constants.dart';
 import '../data_types.dart';
 

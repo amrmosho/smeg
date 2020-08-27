@@ -1,4 +1,4 @@
-import 'package:shop_app/ins/net.dart';
+import 'package:Smeg/ins/net.dart';
 
 //http://smeg.sys4me.com/insapi/sys_content/cat_id/38/
 class Content {

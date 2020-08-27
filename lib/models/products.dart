@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/data_types.dart';
-import 'package:shop_app/ins/lang.dart';
-import 'package:shop_app/ins/net.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/data_types.dart';
+import 'package:Smeg/ins/lang.dart';
+import 'package:Smeg/ins/net.dart';
 
 //http://smeg.sys4me.com/insapi/sys_content_categories/cat_id/38/
 class Product {

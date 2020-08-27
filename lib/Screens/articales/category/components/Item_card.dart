@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/models/products.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/net.dart';
+import 'package:Smeg/models/products.dart';
 
 class ItemCard extends StatelessWidget {
   final Product product;

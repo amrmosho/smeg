@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/Screens/menu/get_menu.dart';
-import 'package:shop_app/app_components/main_body.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/lang.dart';
-import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/ins/ui/ins_ui.dart';
-import 'package:shop_app/ins/utils.dart';
-import 'package:shop_app/models/cart.dart';
+import 'package:Smeg/Screens/menu/get_menu.dart';
+import 'package:Smeg/app_components/main_body.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/lang.dart';
+import 'package:Smeg/ins/net.dart';
+import 'package:Smeg/ins/ui/ins_ui.dart';
+import 'package:Smeg/ins/utils.dart';
+import 'package:Smeg/models/cart.dart';
 
 class CheckoutScreen extends StatefulWidget {
   static String id = "checkout";
@@ -41,7 +41,8 @@ class _CheckOutBodyState extends State<CheckOutBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Container(
+      width: double.infinity,
       child: ListView(
         scrollDirection: Axis.vertical,
         children: [
@@ -114,7 +115,8 @@ class _CheckOutBodyState extends State<CheckOutBody> {
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       vertical: 16.0, horizontal: 16.0),
-                  child: Expanded(
+                  child: Container(
+                    width: double.infinity,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -178,7 +180,7 @@ class _CheckOutBodyState extends State<CheckOutBody> {
   void _submit() {
     var obj = {};
 
-    var k = _fromKey.currentState.validate();
+    //  var k = _fromKey.currentState.validate();
     if (_fromKey.currentState.validate()) {
       _fromKey.currentState.save();
       INSUtils.getDeviceId(context, onDone: (id) {

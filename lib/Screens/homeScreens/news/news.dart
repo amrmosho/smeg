@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop_app/Screens/homeScreens/news/newsitem.dart';
-import 'package:shop_app/app_components/main_body.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/models/content.dart';
+import 'package:Smeg/Screens/homeScreens/news/newsitem.dart';
+import 'package:Smeg/app_components/main_body.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/net.dart';
+import 'package:Smeg/models/content.dart';
 
 class NewsScreen extends StatefulWidget {
   static String id = "news";

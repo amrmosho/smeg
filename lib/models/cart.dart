@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:shop_app/models/products.dart';
+import 'package:Smeg/models/products.dart';
 
 List<Product> cart = [];
 

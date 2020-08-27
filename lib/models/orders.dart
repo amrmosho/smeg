@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/ins/net.dart';
-import 'package:shop_app/ins/utils.dart';
+import 'package:Smeg/ins/net.dart';
+import 'package:Smeg/ins/utils.dart';
 
 class Orders {
   String id, name, email, phone, address, sys_created, status;

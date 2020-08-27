@@ -1,5 +1,7 @@
+import 'package:Smeg/app_components/text.dart';
+import 'package:Smeg/ins/lang.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/constants.dart';
+import 'package:Smeg/constants.dart';
 
 class ScreenTitle extends StatelessWidget {
   final title;
@@ -19,8 +21,7 @@ class ScreenTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size _size;
-    _size = (size == null) ? MediaQuery.of(context).size : size;
+    // Size _size = (size == null) ? MediaQuery.of(context).size : size;
 
     return Container(
       // margin: EdgeInsets.only(bottom: kDefultpadding * 2.5),
@@ -49,21 +50,15 @@ class ScreenTitle extends StatelessWidget {
                     padding: EdgeInsets.only(top: 5),
                     child: Column(
                       children: [
-                        Text(
-                          this.title,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline6
-                              .copyWith(color: INSDefultScreenTitleColor),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 16),
-                          child: Text(
-                            this.subtitle,
-                            style: TextStyle(
-                                color: INSDefultTextColor, fontSize: 12),
-                          ),
-                        ),
+                        INSTitle(text: this.title),
+                        this.subtitle != null
+                            ? Padding(
+                                padding: INSLang.isRTL()
+                                    ? EdgeInsets.only(right: 16)
+                                    : EdgeInsets.only(left: 16),
+                                child: INSSubTitle(text: this.subtitle),
+                              )
+                            : Container(),
                       ],
                     )),
                 Image.asset(

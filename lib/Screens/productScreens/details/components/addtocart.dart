@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shop_app/Screens/productScreens/cart/cart.dart';
-import 'package:shop_app/ins/lang.dart';
-import 'package:shop_app/models/cart.dart';
-import 'package:shop_app/models/products.dart';
-import 'package:shop_app/models/session.dart';
+import 'package:Smeg/Screens/productScreens/cart/cart.dart';
+import 'package:Smeg/ins/lang.dart';
+import 'package:Smeg/models/cart.dart';
+import 'package:Smeg/models/products.dart';
+import 'package:Smeg/models/session.dart';
 
-import 'package:shop_app/constants.dart';
+import 'package:Smeg/constants.dart';
 
 class AddToCart extends StatefulWidget {
   const AddToCart({

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/Screens/menu/get_menu.dart';
-import 'package:shop_app/Screens/start/splash.dart';
-import 'package:shop_app/app_components/main_body.dart';
-import 'package:shop_app/app_components/screen_title.dart';
-import 'package:shop_app/constants.dart';
-import 'package:shop_app/ins/lang.dart';
+import 'package:Smeg/Screens/menu/get_menu.dart';
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/lang.dart';
+import 'package:Smeg/main.dart';
 
 import '../../main.dart';
 
@@ -20,69 +18,62 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size s = MediaQuery.of(context).size;
+
     return AddMenuScreen(
-        title: INSLang.get("settings"),
-        subtitle: "",
-        act: "",
-        Screen: Container(
-          child: AppBody(
-            child: Expanded(
-              child: AppBody(
-                child: settingBody(),
+      title: INSLang.get("settings"),
+      subtitle: "",
+      act: "",
+      Screen: Container(
+        margin: EdgeInsets.all(8),
+        height: s.height - 150,
+        padding: EdgeInsets.symmetric(
+            vertical: INSDefultpadding, horizontal: INSDefultpadding / 4),
+        decoration: BoxDecoration(
+          color: Color(0xfff0eef0),
+          borderRadius: BorderRadius.all(Radius.circular(INSDefultRadius)),
+        ),
+        child: Column(
+          children: [
+            ListTile(
+              title: Text(INSLang.get("en")),
+              leading: Radio(
+                value: Language.en,
+                groupValue: _lnag,
+                onChanged: (value) {
+                  INSLang.update_lang(value, onDone: (data) {
+                    setState(() {
+                      INSLang.update();
+                      RestartWidget.restartApp(context);
+
+                      // Navigator.pushNamed(context, SplashScreen.id);
+
+                      _lnag = value;
+                    });
+                  });
+                },
               ),
             ),
-          ),
-        ));
-  }
+            ListTile(
+              title: Text(INSLang.get("ar")),
+              leading: Radio(
+                value: Language.ar,
+                groupValue: _lnag,
+                onChanged: (value) {
+                  INSLang.update_lang(value, onDone: (data) {
+                    setState(() {
+                      INSLang.update();
+                      RestartWidget.restartApp(context);
 
-  Container settingBody() {
-    return Container(
-        width: double.infinity,
-        child: Expanded(
-          child: Column(
-            children: <Widget>[
-              Text(
-                INSLang.get("language"),
-                style: Theme.of(context).textTheme.headline6,
-              ),
-              ListTile(
-                title: Text(INSLang.get("en")),
-                leading: Radio(
-                  value: Language.en,
-                  groupValue: _lnag,
-                  onChanged: (value) {
-                    INSLang.update_lang(value, onDone: (data) {
-                      setState(() {
-                        INSLang.update();
-                        RestartWidget.restartApp(context);
-
-                        // Navigator.pushNamed(context, SplashScreen.id);
-
-                        _lnag = value;
-                      });
+                      _lnag = value;
                     });
-                  },
-                ),
+                  });
+                },
               ),
-              ListTile(
-                title: Text(INSLang.get("ar")),
-                leading: Radio(
-                  value: Language.ar,
-                  groupValue: _lnag,
-                  onChanged: (value) {
-                    INSLang.update_lang(value, onDone: (data) {
-                      setState(() {
-                        INSLang.update();
-                        RestartWidget.restartApp(context);
-
-                        _lnag = value;
-                      });
-                    });
-                  },
-                ),
-              ),
-            ],
-          ),
-        ));
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

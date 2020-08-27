@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shop_app/Screens/homeScreens/products/products.dart';
-import 'package:shop_app/Screens/productScreens/cart/cart.dart';
-import 'package:shop_app/Screens/productScreens/checkout/checkout.dart';
-import 'package:shop_app/Screens/productScreens/details/details_screen.dart';
-import 'package:shop_app/Screens/settings/setting.dart';
-import 'package:shop_app/Screens/start/splash.dart';
+import 'package:Smeg/Screens/homeScreens/products/products.dart';
+import 'package:Smeg/Screens/productScreens/cart/cart.dart';
+import 'package:Smeg/Screens/productScreens/checkout/checkout.dart';
+import 'package:Smeg/Screens/productScreens/details/details_screen.dart';
+import 'package:Smeg/Screens/settings/setting.dart';
+import 'package:Smeg/Screens/start/splash.dart';
 
-import 'package:shop_app/Screens/start/start.dart';
-import 'package:shop_app/ins/lang.dart';
+import 'package:Smeg/Screens/start/start.dart';
+import 'package:Smeg/ins/lang.dart';
 import 'Screens/homeScreens/home/home.dart';
 import 'constants.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
