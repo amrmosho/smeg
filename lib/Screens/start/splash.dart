@@ -1,3 +1,4 @@
+import 'package:Smeg/app_components/notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:Smeg/Screens/start/start.dart';
 import 'package:Smeg/ins/lang.dart';

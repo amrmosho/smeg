@@ -1,4 +1,5 @@
 import 'package:Smeg/Screens/homeScreens/home/home.dart';
+import 'package:Smeg/app_components/notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:Smeg/Screens/menu/get_menu.dart';
 import 'package:Smeg/app_components/main_body.dart';
@@ -39,6 +40,13 @@ class CheckOutBody extends StatefulWidget {
 class _CheckOutBodyState extends State<CheckOutBody> {
   String _email = "", _name = "", _address = "";
   final _fromKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    inNotification(onDone: () {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -197,6 +205,10 @@ class _CheckOutBodyState extends State<CheckOutBody> {
             onDone: (data) {
               if (data != false) {
                 INSUI.successSnack(context, INSLang.get("successfullymsg"));
+
+                showNotification(
+                    title: INSLang.get("messagefromSmeg"),
+                    body: INSLang.get("successfullymsg"));
 
                 Future.delayed(const Duration(seconds: 2), () {
                   Cart.clear();

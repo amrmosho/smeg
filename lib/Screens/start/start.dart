@@ -30,6 +30,7 @@ class _StratScreenState extends State<StartScreen> {
   double Scale = 1;
 
   bool menu_opend = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
