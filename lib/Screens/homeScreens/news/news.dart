@@ -1,5 +1,5 @@
+import 'package:Smeg/app_components/text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:Smeg/Screens/homeScreens/news/newsitem.dart';
 import 'package:Smeg/app_components/main_body.dart';
 import 'package:Smeg/constants.dart';
@@ -77,12 +77,12 @@ class _NewsScreenState extends State<NewsScreen> {
               Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      contents[index].title,
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                  ),
+                      padding: const EdgeInsets.all(8.0),
+                      child: INSSubTitle(
+                        text: contents[index].title,
+                        color: Colors.white,
+                        fontsize: 20,
+                      )),
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -91,14 +91,12 @@ class _NewsScreenState extends State<NewsScreen> {
                         Icon(Icons.date_range,
                             color: Colors.white.withOpacity(0.7)),
                         Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Text(
-                            contents[index].sys_created,
-                            style: TextStyle(
-                              color: Colors.white.withOpacity(0.7),
-                            ),
-                          ),
-                        ),
+                            padding: const EdgeInsets.all(4.0),
+                            child: INSSubTitle(
+                              text: contents[index].sys_created,
+                              color: Colors.white,
+                              fontsize: 15,
+                            )),
                       ],
                     ),
                   ),

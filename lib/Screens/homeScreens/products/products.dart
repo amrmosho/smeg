@@ -50,7 +50,7 @@ class _ProductesScreenState extends State<ProductesScreen> {
   }
 
   TextEditingController _textFieldController = TextEditingController();
-  var _stat = "Favorites";
+  var _stat = INSLang.get("favorites");
 
   @override
   void initState() {
@@ -66,7 +66,7 @@ class _ProductesScreenState extends State<ProductesScreen> {
           SearchBar(
             textSearcController: _textFieldController,
             onChanged: (value) {},
-            hint: " Search in " + _stat + " ....",
+            hint: INSLang.get("searchin") + " " + _stat + " ....",
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -175,13 +175,13 @@ class _ProductesScreenState extends State<ProductesScreen> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          if (title == "Favorites" && _products.length == 0) {
+          if (title == INSLang.get("favorites") && _products.length == 0) {
             updateFavotire();
+            _stat = INSLang.get("favorites");
           } else {
             updateOrder();
+            _stat = INSLang.get("myorders");
           }
-
-          _stat = title;
         });
       },
       child: Column(

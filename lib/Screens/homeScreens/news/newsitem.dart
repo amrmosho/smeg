@@ -1,3 +1,4 @@
+import 'package:Smeg/app_components/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:Smeg/app_components/main_body.dart';
@@ -74,12 +75,13 @@ class NewsItemSreen extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 32, left: 32, right: 32),
-                child: Text(
-                  content.title,
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-              ),
+                  padding:
+                      const EdgeInsets.only(bottom: 32, left: 32, right: 32),
+                  child: INSSubTitle(
+                    text: content.title,
+                    color: Colors.white,
+                    fontsize: 20,
+                  )),
             ],
           ),
           Container(
@@ -95,9 +97,9 @@ class NewsItemSreen extends StatelessWidget {
                         Icon(Icons.date_range),
                         Padding(
                           padding: const EdgeInsets.all(4.0),
-                          child: Text(
-                            content.sys_created,
-                            style: TextStyle(fontSize: 12, color: Colors.grey),
+                          child: INSSubTitle(
+                            text: content.sys_created,
+                            fontsize: 17,
                           ),
                         ),
                       ],
@@ -105,9 +107,10 @@ class NewsItemSreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16),
-                    child: Text(
-                      content.des,
-                      style: TextStyle(fontSize: 16, color: Colors.grey),
+                    child: INSSubTitle(
+                      text: content.des,
+                      fontsize: 17,
+                      color: Colors.black,
                     ),
                   ),
                 ],
