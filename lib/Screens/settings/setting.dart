@@ -1,3 +1,4 @@
+import 'package:Smeg/Screens/start/app.dart';
 import 'package:flutter/material.dart';
 import 'package:Smeg/Screens/menu/get_menu.dart';
 import 'package:Smeg/constants.dart';
@@ -44,9 +45,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   INSLang.update_lang(value, onDone: (data) {
                     setState(() {
                       INSLang.update();
-                      RestartWidget.restartApp(context);
 
-                      // Navigator.pushNamed(context, SplashScreen.id);
+                      Navigator.pushNamed(context, AppScreen.id);
 
                       _lnag = value;
                     });
@@ -63,8 +63,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   INSLang.update_lang(value, onDone: (data) {
                     setState(() {
                       INSLang.update();
-                      RestartWidget.restartApp(context);
-
+                      Navigator.pushNamed(context, AppScreen.id);
                       _lnag = value;
                     });
                   });
