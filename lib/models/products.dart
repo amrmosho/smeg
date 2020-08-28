@@ -136,7 +136,9 @@ class Product {
 
   static Product updatLang(Product data) {
     if (language == Language.ar) {
-      if (data.sys_languages != "") {
+      if (data.sys_languages != "" &&
+          data.sys_languages != null &&
+          data.sys_languages != "null") {
         Map l = jsonDecode(data.sys_languages);
         if (l.containsKey("title")) {
           Map ltitle = l["title"];

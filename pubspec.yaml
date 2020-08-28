@@ -29,6 +29,7 @@ dependencies:
   device_info: ^0.4.2+6
   shared_preferences: ^0.5.10
   flutter_local_notifications: ^1.4.4+4
+  flutter_open_whatsapp: ^0.1.2
 
 
 

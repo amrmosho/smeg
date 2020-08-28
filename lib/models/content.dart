@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:Smeg/constants.dart';
+import 'package:Smeg/ins/lang.dart';
 import 'package:Smeg/ins/net.dart';
 
 //http://smeg.sys4me.com/insapi/sys_content/cat_id/38/
@@ -95,7 +99,7 @@ class Content {
 
     INSNet.jsonReadData(type, onDone: (data, file) {
       List<Content> cat_data = List<Content>.from(
-          data.map((data) => Content.fromJson(data)).toList());
+          data.map((data) => updatLang(Content.fromJson(data))).toList());
       onDone(cat_data);
     }, ISFileOntExist: (path) {
       update(onDone: onDone);
@@ -123,5 +127,37 @@ class Content {
 
       onDone(data);
     });
+  }
+
+  static Content updatLang(Content data) {
+    if (language == Language.ar) {
+      if (data.sys_languages != "" &&
+          data.sys_languages != null &&
+          data.sys_languages != "null") {
+        Map l = jsonDecode(data.sys_languages);
+
+        if (l.containsKey("title")) {
+          Map ltitle = l["title"];
+          if (ltitle.containsKey("ar")) {
+            data.title = ltitle["ar"];
+          }
+        }
+
+        if (l.containsKey("des")) {
+          Map ldes = l["des"];
+          if (ldes.containsKey("ar")) {
+            data.des = ldes["ar"];
+          }
+        }
+
+        if (l.containsKey("body")) {
+          Map ldes = l["body"];
+          if (ldes.containsKey("ar")) {
+            data.body = ldes["ar"];
+          }
+        }
+      }
+    }
+    return data;
   }
 }

@@ -9,6 +9,7 @@ import 'package:Smeg/ins/net.dart';
 import 'package:Smeg/ins/ui/ins_ui.dart';
 import 'package:Smeg/ins/utils.dart';
 import 'package:Smeg/models/cart.dart';
+import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 
 class CheckoutScreen extends StatefulWidget {
   static String id = "checkout";
@@ -130,17 +131,7 @@ class _CheckOutBodyState extends State<CheckOutBody> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         RaisedButton(
-                          onPressed: () {
-                            INSNet.getJsone(
-                                data: {"mydata": "data"},
-                                onDone: (data) {
-                                  print(data);
-                                });
-
-                            if (_fromKey.currentState.validate()) {
-                              _fromKey.currentState.save();
-                            }
-                          },
+                          onPressed: _whats,
                           child: Text(INSLang.get('sendtowa')),
                         ),
                         RaisedButton(
@@ -186,10 +177,56 @@ class _CheckOutBodyState extends State<CheckOutBody> {
     }
   }
 
+//https://api.whatsapp.com/send?phone=201222489051&text=Hi
+
+  void _whats() {
+    var obj = {};
+
+    if (_fromKey.currentState.validate()) {
+      _fromKey.currentState.save();
+      INSUtils.getDeviceId(context, onDone: (id) {
+        obj["email"] = _email;
+        obj["name"] = _name;
+        obj["items"] = Cart.getDataJsone();
+        obj["device_id"] = id;
+        obj["address"] = _address;
+
+        String msg = "email  : " + _email + "\n";
+        msg += "name  : " + _name + "\n";
+        msg += "address  : " + _address + "\n";
+        msg += "device_id  : " + id + "\n";
+
+        msg += "items  : " + Cart.getDataJsone() + "\n";
+
+        FlutterOpenWhatsapp.sendSingleMessage(phonenumber, msg);
+        print("xxxxxxxxx");
+/*
+        INSNet.getJsone(
+            addToUrl: "insert/com_orders/",
+            data: obj,
+            onDone: (data) {
+              if (data != false) {
+                INSUI.successSnack(context, INSLang.get("successfullymsg"));
+
+                showNotification(
+                    title: INSLang.get("messagefromSmeg"),
+                    body: INSLang.get("successfullymsg"));
+
+                Future.delayed(const Duration(seconds: 2), () {
+                  Cart.clear();
+                  Navigator.pushNamed(context, HomeScreen.id);
+                });
+              } else {
+                INSUI.errorSnack(context, INSLang.get("faildmsg"));
+              }
+            });*/
+      });
+    }
+  }
+
   void _submit() {
     var obj = {};
 
-    //  var k = _fromKey.currentState.validate();
     if (_fromKey.currentState.validate()) {
       _fromKey.currentState.save();
       INSUtils.getDeviceId(context, onDone: (id) {
