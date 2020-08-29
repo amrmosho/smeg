@@ -1,4 +1,5 @@
 import 'package:Smeg/Screens/homeScreens/home/home.dart';
+import 'package:Smeg/Screens/start/start.dart';
 import 'package:Smeg/app_components/notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:Smeg/Screens/menu/get_menu.dart';
@@ -199,27 +200,16 @@ class _CheckOutBodyState extends State<CheckOutBody> {
         msg += "items  : " + Cart.getDataJsone() + "\n";
 
         FlutterOpenWhatsapp.sendSingleMessage(phonenumber, msg);
-        print("xxxxxxxxx");
-/*
-        INSNet.getJsone(
-            addToUrl: "insert/com_orders/",
-            data: obj,
-            onDone: (data) {
-              if (data != false) {
-                INSUI.successSnack(context, INSLang.get("successfullymsg"));
+        INSUI.successSnack(context, INSLang.get("successfullymsg"));
 
-                showNotification(
-                    title: INSLang.get("messagefromSmeg"),
-                    body: INSLang.get("successfullymsg"));
+        showNotification(
+            title: INSLang.get("messagefromSmeg"),
+            body: INSLang.get("successfullymsg"));
 
-                Future.delayed(const Duration(seconds: 2), () {
-                  Cart.clear();
-                  Navigator.pushNamed(context, HomeScreen.id);
-                });
-              } else {
-                INSUI.errorSnack(context, INSLang.get("faildmsg"));
-              }
-            });*/
+        Future.delayed(const Duration(seconds: 2), () {
+          Cart.clear();
+          Navigator.pushNamed(context, StartScreen.id);
+        });
       });
     }
   }
@@ -249,7 +239,7 @@ class _CheckOutBodyState extends State<CheckOutBody> {
 
                 Future.delayed(const Duration(seconds: 2), () {
                   Cart.clear();
-                  Navigator.pushNamed(context, HomeScreen.id);
+                  Navigator.pushNamed(context, StartScreen.id);
                 });
               } else {
                 INSUI.errorSnack(context, INSLang.get("faildmsg"));

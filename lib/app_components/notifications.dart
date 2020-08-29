@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:Smeg/Screens/start/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,7 +11,8 @@ Future<void> inNotification({Function onDone}) async {
   notificationAppLaunchDetails =
       await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
 
-  var initializationSettingsAndroid = AndroidInitializationSettings('app_icon');
+  var initializationSettingsAndroid =
+      AndroidInitializationSettings('@mipmap/ic_launcher');
 
   var initializationSettingsIOS = IOSInitializationSettings(
       requestAlertPermission: false,
@@ -45,7 +45,7 @@ Future<void> showNotification(
       'your channel id', 'your channel name', 'your channel description',
       playSound: true,
       showProgress: true,
-      largeIcon: DrawableResourceAndroidBitmap('app_icon'),
+      largeIcon: DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
       importance: Importance.Max,
       priority: Priority.High,
       ticker: 'ticker');
